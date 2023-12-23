@@ -9,8 +9,48 @@ import { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            username: 'th203',
+            password: '123',
+            hidePassword: true
+        }
     }
 
+    handOnChangeUserName = (event) => {
+        this.setState({
+            username: event.target.value
+        })
+        // console.log("User Name", event.target.value)
+    }
+    handOnChangePassword = (event) => {
+        this.setState({
+            password: event.target.value
+        })
+        // console.log("Password", event.target.value)
+    }
+
+    handOnChangeLoginBtn = () => {
+        console.log("User Name:", this.state.username);
+        console.log("Password:", this.state.password);
+    }
+
+    handOnHidePasswordClick = () => {
+        // if (this.state.hidePassword === true) {
+        //     this.setState({
+        //         hidePassword: false
+        //     })
+        // }
+        // else if (this.state.hidePassword === false) {
+        //     this.setState({
+        //         hidePassword: true
+        //     })
+        // }
+        this.setState({
+            hidePassword: !this.state.hidePassword
+        })
+
+
+    }
 
     render() {
 
@@ -22,19 +62,32 @@ class Login extends Component {
                         <div className='col-12 text-login'>Login</div>
                         <div className='col-12 form-group login-input'>
                             <label className='col-12'>Username</label>
-                            <input type='text' className='form-control' placeholder='Enter your user name'></input>
+                            <input
+                                type='text'
+                                className='form-control'
+                                placeholder='Enter your user name'
+                                onChange={(event) => this.handOnChangeUserName(event)}>
+                            </input>
                         </div>
                         <div className='col-12 form-group login-input'>
                             <label className='col-12'>Password</label>
-                            <input type='password' className='form-control' placeholder='Enter your password'></input>
+                            <div className='custom-password-input'>
+                                <input
+                                    type={this.state.hidePassword ? "password" : "text"}
+                                    className='form-control'
+                                    placeholder='Enter your password'
+                                    onChange={(event) => { this.handOnChangePassword(event) }}></input>
+
+                                <i class={this.state.hidePassword ? "far fa-eye eye" : "far fa-eye-slash eye"} onClick={() => this.handOnHidePasswordClick()}></i>
+                            </div>
                         </div>
                         <div className='col-12 login-input'>
-                            <button className='btn-login'>Login</button>
+                            <button className='btn-login' onClick={this.handOnChangeLoginBtn}>Login</button>
                         </div>
                         <div className='col-12'>
                             <div className='forgot-password'>Forgot your password?</div>
                         </div>
-                        <div className='col-12 text-center mt-5'>
+                        <div className='col-12 text-center mt-4'>
                             <div>Or sign in with:</div>
                         </div>
                         <div className='social-ass'>
@@ -43,7 +96,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         )
     }
