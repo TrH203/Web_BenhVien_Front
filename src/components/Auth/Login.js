@@ -4,15 +4,14 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-
+import { UserLoginService } from '../../services';
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: 'th203',
-            password: '123',
-            hidePassword: true
+            hidePassword: true,
+            loginError: {},
         }
     }
 
@@ -29,9 +28,11 @@ class Login extends Component {
         // console.log("Password", event.target.value)
     }
 
-    handOnChangeLoginBtn = () => {
-        console.log("User Name:", this.state.username);
-        console.log("Password:", this.state.password);
+    handOnChangeLoginBtn = async () => {
+        this.setState({
+            loginError: await UserLoginService(this.state.username, this.state.password)
+        })
+        console.log(this.state.loginError);
     }
 
     handOnHidePasswordClick = () => {
@@ -52,6 +53,9 @@ class Login extends Component {
 
     }
 
+    showLoginError = (message) => {
+        return message !== "ok";
+    }
     render() {
 
         return (
@@ -81,8 +85,13 @@ class Login extends Component {
                                 <i class={this.state.hidePassword ? "far fa-eye eye" : "far fa-eye-slash eye"} onClick={() => this.handOnHidePasswordClick()}></i>
                             </div>
                         </div>
+                        {<div className='col-12 login-error'>
+                            {this.showLoginError(this.state.loginError.message) ? this.state.loginError.message : " "}
+                        </div>}
                         <div className='col-12 login-input'>
-                            <button className='btn-login' onClick={this.handOnChangeLoginBtn}>Login</button>
+                            <button className='btn-login' onClick={this.handOnChangeLoginBtn}>
+                                Login
+                            </button>
                         </div>
                         <div className='col-12'>
                             <div className='forgot-password'>Forgot your password?</div>
