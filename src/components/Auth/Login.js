@@ -81,7 +81,6 @@ class Login extends Component {
                                     className='form-control'
                                     placeholder='Enter your password'
                                     onChange={(event) => { this.handOnChangePassword(event) }}></input>
-
                                 <i class={this.state.hidePassword ? "far fa-eye eye" : "far fa-eye-slash eye"} onClick={() => this.handOnHidePasswordClick()}></i>
                             </div>
                         </div>

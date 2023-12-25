@@ -1,0 +1,65 @@
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+}
+
+.simple-table {
+width: 100%;
+border-collapse: collapse;
+margin-top: 20px;
+}
+
+.simple-table th,
+.simple-table td {
+border: 1px solid #dddddd;
+text-align: left;
+padding: 8px;
+}
+
+.simple-table th {
+background-color: #f2f2f2;
+}
+
+.simple-table tbody tr:hover {
+background-color: #d9d9d9b5; /* Blue hover color */
+}
+.div-btn{
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
+    min-width: auto;
+    margin: 0 auto 0 auto;
+}
+
+button{
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.edit{
+    background-color: rgba(0, 128, 0, 0.788);
+    min-width: 60px;
+    color: rgb(232, 247, 220);
+}
+
+.edit:hover{
+    margin-top: -3px;
+    box-shadow: 5px 5px 10px rgba(0, 128, 0, 0.788);
+}
+.del{
+    background-color: rgba(255, 0, 0, 0.882);
+    min-width: 75px;
+    color: rgb(255, 237, 237);
+}
+.del:hover{
+    margin-top: -3px;
+    box-shadow: 5px 5px 10px rgba(255, 0, 0, 0.882);
+}

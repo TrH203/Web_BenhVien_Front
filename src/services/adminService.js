@@ -16,4 +16,18 @@ const adminService = {
 
 };
 
-export default adminService;
+const getUserService = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = axios.get("http://localhost:8080/api/crud");
+            resolve(response);
+        } catch (e) {
+            console.log(e);
+            reject({});
+        }
+    })
+}
+export {
+    adminService,
+    getUserService,
+};
