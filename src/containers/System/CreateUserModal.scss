@@ -1,0 +1,23 @@
+.create-user-modal-body{
+    font-size: 20px;
+}
+.create-user-modal-footer{
+    .create-btn, .cancel-btn{
+        padding: 8px;
+        height: auto;
+    }
+    // .cancel-btn{
+    //     padding: 8px;
+    //     height: auto;
+    // }
+}
+.modal-content{
+    .modal-header{
+        .close{
+            border: none;
+            background-color: rgba(245, 245, 220, 0);
+            color: white;
+            font-size: 25px;
+        }
+    }
+}

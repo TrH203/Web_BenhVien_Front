@@ -27,7 +27,19 @@ const getUserService = () => {
         }
     })
 }
+
+const createNewUser = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let status = await axios.post("http://localhost:8080/api/create-new-user");
+            reject(status);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
 export {
     adminService,
     getUserService,
+    createNewUser,
 };
