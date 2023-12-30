@@ -47,9 +47,10 @@ class UserManage extends Component {
         let data = await getUserService(id);
         delete data.password;
         if (data.errCode === 0) {
-            this.setState({
-                data4EditUser: data.users,
-            })
+            return data.users
+        }
+        else {
+            return {}
         }
     }
 
@@ -74,7 +75,7 @@ class UserManage extends Component {
                 <EditUserModal
                     isOpen={this.state.openEditUserModal}
                     handleEditUserModalToggle={this.handleEditUserModalToggle}
-                    userData={this.state.data4EditUser}
+                    updateDataTable={this.updateDataTable}
                 />
                 <div className='mx-3'>
                     <div className='col-12 mt-3 add-user-div'>
@@ -107,10 +108,11 @@ class UserManage extends Component {
                                             <td>
                                                 <div className='div-btn'>
                                                     <button className='edit' id={item.id} onClick={async (event) => {
-                                                        if (event.target.id) {
-                                                            await this.getDataForEdit(event.target.id);
-                                                        }
                                                         this.handleEditUserModalToggle();
+                                                        if (event.target.id) {
+                                                            let data4EditUser = await this.getDataForEdit(event.target.id);
+                                                            emitter.emit("Fill_Update_User_Data", data4EditUser);
+                                                        }
                                                     }}>
                                                         Edit
                                                         <i className="far fa-edit"></i>

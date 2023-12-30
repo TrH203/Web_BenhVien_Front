@@ -5,12 +5,13 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { input } from "bootstrap";
 import "./CreateUserModal.scss";
 import { editUserService } from '../../services/adminService'
+import { emitter } from "../../utils/emitter";
 class EditUserModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: "",
             email: "",
-            password: "",
             firstName: "",
             lastName: "",
             gender: "",
@@ -19,13 +20,14 @@ class EditUserModal extends Component {
             address: "",
             showMissing: false,
         }
+        this.listenEmitter();
     }
     componentDidMount() {
     }
     handleResetState = () => {
         this.setState({
+            id: "",
             email: "",
-            password: "",
             firstName: "",
             lastName: "",
             gender: "",
@@ -70,6 +72,21 @@ class EditUserModal extends Component {
         this.props.handleEditUserModalToggle();
         this.handleResetState();
     }
+    listenEmitter = () => {
+        emitter.on("Fill_Update_User_Data", (data) => {
+            console.log(data);
+            this.setState({
+                id: data.id,
+                email: data.email,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                gender: data.gender,
+                roleId: data.roleId,
+                phoneNumber: data.phoneNumber,
+                address: data.address,
+            })
+        });
+    }
     render() {
         // console.log(this.props.userData);
         return (
@@ -79,7 +96,6 @@ class EditUserModal extends Component {
                     toggle={this.toggle}
                     centered={true}
                     size='lg'
-                    id={this.props.id}
                 >
                     <ModalHeader toggle={this.toggle}>Update user</ModalHeader>
                     <ModalBody className='create-user-modal-body'>
@@ -92,7 +108,7 @@ class EditUserModal extends Component {
                                         id="inputEmail4"
                                         name="email"
                                         onChange={(event) => { this.handleChangeInput(event) }}
-                                        value={this.props.userData.email}
+                                        value={this.state.email}
                                     ></input>
                                 </div>
                                 <div className="col-md-6">
@@ -102,7 +118,7 @@ class EditUserModal extends Component {
                                         id="inputAddress"
                                         placeholder="1234 Street"
                                         name="address" onChange={(event) => { this.handleChangeInput(event) }}
-                                        value={this.props.userData.address}
+                                        value={this.state.address}
                                     ></input>
                                 </div>
                                 <div className="col-md-6">
@@ -111,7 +127,7 @@ class EditUserModal extends Component {
                                         className="form-control"
                                         id="first-name" name="firstName"
                                         onChange={(event) => { this.handleChangeInput(event) }}
-                                        value={this.props.userData.firstName}
+                                        value={this.state.firstName}
                                     ></input>
                                 </div>
                                 <div className="col-md-6">
@@ -121,7 +137,7 @@ class EditUserModal extends Component {
                                         id="last-name"
                                         name="lastName"
                                         onChange={(event) => { this.handleChangeInput(event) }}
-                                        value={this.props.userData.lastName}
+                                        value={this.state.lastName}
                                     ></input>
                                 </div>
                                 <div className="col-md-6">
@@ -132,7 +148,7 @@ class EditUserModal extends Component {
                                         placeholder="0331234567"
                                         name="phoneNumber"
                                         onChange={(event) => { this.handleChangeInput(event) }}
-                                        value={this.props.userData.phoneNumber}
+                                        value={this.state.phoneNumber}
                                     ></input>
                                 </div>
                                 <div className="col-md-3">
@@ -143,7 +159,7 @@ class EditUserModal extends Component {
                                         onChange={(event) => { this.handleChangeInput(event) }}
                                     >
 
-                                        {this.props.userData.gender === 1 ?
+                                        {this.state.gender === 1 ?
                                             <>
                                                 <option selected value="1">Male</option>
                                                 <option value="0">Female</option>
@@ -162,7 +178,7 @@ class EditUserModal extends Component {
                                         name="roleId"
                                         onChange={(event) => { this.handleChangeInput(event) }}
                                     >
-                                        {this.props.userData.roleId === '0' ?
+                                        {this.state.roleId === '0' ?
                                             <>
                                                 <option selected value="0">Admin</option>
                                                 <option value="1">Doctor</option> </>
@@ -179,12 +195,14 @@ class EditUserModal extends Component {
 
                     </ModalBody >
                     <ModalFooter className='create-user-modal-footer'>
-                        <Button className="create-btn" color="primary" onClick={() => {
+                        <Button className="create-btn" color="primary" onClick={async () => {
                             this.toggle();
-                            editUserService(this.props.id, this.state);
+                            delete this.state.showMissing;
+                            await editUserService(this.state);
+                            await this.props.updateDataTable();
                         }}>
                             Update
-                        </Button>{' '}
+                        </Button>
                         <Button className="cancel-btn" color="secondary" onClick={this.toggle}>
                             Cancel
                         </Button>

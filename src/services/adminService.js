@@ -40,13 +40,10 @@ const createNewUserService = (data) => {
     })
 }
 
-const editUserService = (id, data) => {
+const editUserService = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            data.id = id;
-            console.log(data);
             let status = await axios.put("http://localhost:8080/api/edit-user", data);
-            console.log(status);
             resolve(status);
         } catch (e) {
             reject(e);
