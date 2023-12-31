@@ -5,6 +5,7 @@ import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
 import { UserLoginService } from '../../services';
+import { adminService } from '../../services';
 
 class Login extends Component {
     constructor(props) {
@@ -13,6 +14,11 @@ class Login extends Component {
             hidePassword: true,
             loginError: {},
         }
+    }
+    redirectToSystemPage = () => {
+        const { navigate } = this.props;
+        const redirectPath = '/system/user-manage';
+        navigate(`${redirectPath}`);
     }
 
     handOnChangeUserName = (event) => {
@@ -32,7 +38,9 @@ class Login extends Component {
         this.setState({
             loginError: await UserLoginService(this.state.username, this.state.password)
         })
-        console.log(this.state.loginError);
+        if (this.state.loginError.errCode === 0) {
+            this.processLogin();
+        }
     }
 
     handOnHidePasswordClick = () => {
@@ -55,6 +63,33 @@ class Login extends Component {
 
     showLoginError = (message) => {
         return message !== "ok";
+    }
+
+    processLogin = () => {
+        const { username, password } = this.state;
+
+        const { adminLoginSuccess, adminLoginFail } = this.props;
+        // let loginBody = {
+        //     username: 'admin',
+        //     password: '123456'
+        // }
+        //sucess
+        let adminInfo = {
+            "tlid": "0",
+            "tlfullname": "Administrator",
+            "custype": "A",
+            "accessToken": "eyJhbGciOiJIU"
+        }
+
+        adminLoginSuccess(adminInfo);
+        // this.refresh();
+        this.redirectToSystemPage();
+        // try {
+        //     adminService.login(loginBody)
+        // } catch (e) {
+        //     console.log('error login : ', e)
+        // }
+
     }
     render() {
 
