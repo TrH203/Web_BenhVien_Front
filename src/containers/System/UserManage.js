@@ -84,9 +84,9 @@ class UserManage extends Component {
                             Create new user
                         </button>
                     </div>
-                    <table class="simple-table">
+                    <table className="simple-table">
                         <thead>
-                            <tr>
+                            <tr className='table-header'>
                                 <th>Id</th>
                                 <th>Email</th>
                                 <th>First Name</th>
