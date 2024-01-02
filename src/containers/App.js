@@ -9,6 +9,7 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 
 import { path } from '../utils'
 
+import "./App.scss"
 import Home from '../routes/Home';
 // import Login from '../routes/Login';
 import Login from '../components/Auth/Login';

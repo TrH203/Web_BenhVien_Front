@@ -1,15 +1,19 @@
 .home-header-container{
-    height: 78px;
+    height: 178px;
     width: 100%;
-
+    background-color: rgb(240,254,250);
+    padding-top: 20px;
     .home-header-content{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 100%;
+        height: 78;
+        width: 60%;
         padding: 0 20 0 20;
-        background-color: rgb(240,254,250);
+        margin: auto;
         .left-content{
+            display: flex;
+            align-items: center;
             padding-left: 20px;
             width: 25%;
             .logo{
@@ -51,3 +55,11 @@
         }
     }
 }
+.ad-image-container{
+        margin-top: 20px;
+        text-align: center;
+        .ad-image{
+            height: 400px;
+            width: auto;
+        }
+    }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import anh1 from '../../assets/images/anh1.png';
 import "./HomeHeader.scss";
 class HomeHeader extends Component {
 
@@ -30,10 +30,19 @@ class HomeHeader extends Component {
                                 <div>Hỗ Trợ</div>
                             </div>
 
-
                         </div>
                     </div>
                 </div>
+                <div className='ad-image-container'>
+                    <img className="ad-image" src={anh1}></img>
+                </div>
+                <div className='ad-image-container'>
+                    <img className="ad-image" src={anh1}></img>
+                </div>
+                <div className='ad-image-container'>
+                    <img className="ad-image" src={anh1}></img>
+                </div>
+                <button>ok</button>
             </>
         );
     }
