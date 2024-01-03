@@ -43,6 +43,63 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
+                <div className='home-header-banner'>
+                    <div className='content-up'>
+                        <div className='title1'>
+                            <b>Nền tảng y tế</b>
+                        </div>
+                        <div className='title2'>
+                            <b>Chăm sóc sức khỏe toàn diện</b>
+                        </div>
+                        <div className='search-banner'>
+                            <i class="fas fa-search"></i>
+                            <input placeholder='Tìm kiếm của bạn'></input>
+                        </div>
+                        <div className='options'>
+                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg'></img>
+                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg'></img>
+                        </div>
+                    </div>
+                    <div className='content-down'>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-chuyenkhoa'></div>
+                            </div>
+                            <b>Khám Chuyên khoa</b>
+                        </div>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-tuxa'></div>
+                            </div>
+                            <b>Khám Tại nhà</b>
+                        </div>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-tongquat'></div>
+                            </div>
+                            <b>Khám Tổng quát</b>
+                        </div>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-xetnghiem'></div>
+                            </div>
+                            <b>Xét nghiệm</b>
+                        </div>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-tinhthan'></div>
+                            </div>
+                            <b>Khám tinh thần</b>
+                        </div>
+                        <div className='inner-down'>
+                            <div className='image-container'>
+                                <div className='image-nhakhoa'></div>
+                            </div>
+                            <b>Khám nha khoa</b>
+                        </div>
+                    </div>
+                </div>
+
             </>
         );
     }
