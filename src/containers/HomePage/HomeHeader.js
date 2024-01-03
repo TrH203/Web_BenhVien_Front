@@ -12,6 +12,7 @@ class HomeHeader extends Component {
     }
 
     render() {
+        { console.log(this.props); }
         return (
             <>
                 <div className='home-header-container'>
