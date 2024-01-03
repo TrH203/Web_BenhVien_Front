@@ -1,35 +1,38 @@
 .home-header-container{
-    height: 178px;
+    height: 120px;
     width: 100%;
-    background-color: rgb(240,254,250);
-    padding-top: 20px;
+    background-color: rgb(255, 255, 255);
     .home-header-content{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 78;
-        width: 60%;
-        padding: 0 20 0 20;
+        height: 100%;
+        width: 90%;
         margin: auto;
         .left-content{
             display: flex;
             align-items: center;
             padding-left: 20px;
-            width: 25%;
+            width: 20%;
             .logo{
-                height: 50px;
+                height: 60px;
                 padding: 5px;
+            }
+            .menu-bar{
+                font-size: 20px;
+                cursor: pointer;
             }
         }
         .center-content{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 50%;
+            width: 60%;
             .title{
                 margin-top: 0px;
                 font-size: 15px;
                 color: black;
+                cursor: pointer;
             }
             .search-header{
                 padding: 5px;
@@ -44,22 +47,15 @@
 
         }
         .right-content{
-            width: 25%;
+            width: 20%;
             display: flex;
             justify-content: end;
             .inner-div-right{
                 text-align: center;
-                margin-right: 20px;
+                margin-right: 40px;
                 color: rgb(107,192,208);
+                cursor: pointer;
             }
         }
     }
 }
-.ad-image-container{
-        margin-top: 20px;
-        text-align: center;
-        .ad-image{
-            height: 400px;
-            width: auto;
-        }
-    }

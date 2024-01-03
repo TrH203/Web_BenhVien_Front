@@ -1,0 +1,11 @@
+.image-container{
+    width: 850px;
+    height: 400px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    .image{
+        width: 850px;
+        height: 400px;
+    }
+}

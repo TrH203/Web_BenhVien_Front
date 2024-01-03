@@ -9,7 +9,6 @@ class HomePage extends Component {
         return (
             <div className='homepage-container'>
                 <HomeHeader />
-                <div>Hello HomePage</div>
             </div>
         );
     }

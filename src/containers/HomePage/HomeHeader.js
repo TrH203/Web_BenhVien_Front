@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import anh1 from '../../assets/images/anh1.png';
 import "./HomeHeader.scss";
 class HomeHeader extends Component {
 
@@ -11,15 +10,26 @@ class HomeHeader extends Component {
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
-                            <i class="fas fa-bars fa-lg"></i>
+                            <i class="fas fa-bars fa-lg menu-bar"></i>
                             <img className='logo' src='https://bookingcare.vn/assets/icon/bookingcare-2020.svg'></img>
                         </div>
                         <div className='center-content'>
-                            <div className='title'>Tất cả</div>
-                            <div className='title'>Tại nhà</div>
-                            <div className='title'>Tại viện</div>
-                            <div className='title'>Sống khỏe</div>
-                            <input className="search-header" placeholder='Tìm kiếm của bạn'></input>
+                            <div className='child-center-content'>
+                                <div><b>Chuyên khoa</b></div>
+                                <div>Tìm bác sĩ theo chuyên khoa</div>
+                            </div>
+                            <div className='child-center-content'>
+                                <div><b>Cơ sở y tế</b></div>
+                                <div>Chọn bệnh viện phòng khám</div>
+                            </div>
+                            <div className='child-center-content'>
+                                <div><b>Bác sĩ</b></div>
+                                <div>Chọn bác sĩ</div>
+                            </div>
+                            <div className='child-center-content'>
+                                <div><b>Gói khám</b></div>
+                                <div>Khám sức khỏe tổng quát</div>
+                            </div>
                         </div>
                         <div className='right-content'>
                             <div className='inner-div-right'>
@@ -33,16 +43,6 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-                <div className='ad-image-container'>
-                    <img className="ad-image" src={anh1}></img>
-                </div>
-                <div className='ad-image-container'>
-                    <img className="ad-image" src={anh1}></img>
-                </div>
-                <div className='ad-image-container'>
-                    <img className="ad-image" src={anh1}></img>
-                </div>
-                <button>ok</button>
             </>
         );
     }
