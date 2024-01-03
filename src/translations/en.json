@@ -116,5 +116,26 @@
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
+    },
+    "home-header":{
+        "specialty": "Specialty",
+        "search-doctor": "Search Doctor",
+        "health-facilities": "Health Facilities",
+        "choose-clinic": "Choose Clinic",
+        "doctor": "Doctor",
+        "choose-doctor": "Choose Doctor",
+        "package": "Package",
+        "general-health-checkup": "General Health Checkup",
+        "appointments": "Appointments",
+        "support": "Support",
+        "health-platform": "Health Platform",
+        "comprehensive-healthcare": "Comprehensive Healthcare",
+        "search-placeholder": "Search",
+        "specialty-examination": "Specialty Examination",
+        "home-examination": "Home Examination",
+        "general-examination": "General Examination",
+        "lab-test": "Lab Test",
+        "mental-health-examination": "Mental Health Examination",
+        "dental-examination": "Dental Examination"
     }
 }

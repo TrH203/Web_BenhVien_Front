@@ -25,9 +25,10 @@
         }
         .center-content{
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             width: 60%;
+            font-size: 15px;
             .title{
                 margin-top: 0px;
                 font-size: 15px;
@@ -56,17 +57,30 @@
                 color: rgb(107,192,208);
                 cursor: pointer;
             }
+            .VI, .EN{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                cursor: pointer;
+
+                &.active{
+                    color: gold;
+                }
+            }
+
         }
     }
 }
 
 .home-header-banner{
     background: url("../../assets/images/background-3.jpg") center center no-repeat;
+    opacity: 0.88;
     background-size: cover;
     width: 100%;
     height: 1000px;
     .content-up{
         height: 50%;
+        background-image: linear-gradient(180deg, #00000055, rgba(255, 255, 255, 0));
         .title1{
         padding-top: 110px;
         }
@@ -118,63 +132,69 @@
         height: 50%;
         display: flex;
         justify-content: space-around;
-        align-items: end;
-        padding-bottom: 20px;
-        .inner-down{
-            width: 200px;
-            height: fit-content;
-            text-align: center;
-               .image-container{
-                margin: auto;
-                background-color: white;
-                width: 70px;
-                height: 70px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-                border-radius: 100%;
-                -webkit-border-radius: 100%;
-                -moz-border-radius: 100%;
-                -ms-border-radius: 100%;
-                -o-border-radius: 100%;
-                .image-chuyenkhoa{
-                    background: url('../../assets/images/chuyenkhoa.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
+        // padding-bottom: 20px;
+        background: linear-gradient(to top, #ffffff, #ffffff00);
+        .options{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: flex-end;
+            .inner-down{
+                width: 200px;
+                height: 150px;
+                text-align: center;
+                .image-container{
+                    margin: auto;
+                    background-color: white;
+                    width: 70px;
+                    height: 70px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: none;
+                    border-radius: 100%;
+                    -webkit-border-radius: 100%;
+                    -moz-border-radius: 100%;
+                    -ms-border-radius: 100%;
+                    -o-border-radius: 100%;
+                    .image-chuyenkhoa{
+                        background: url('../../assets/images/chuyenkhoa.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .image-tuxa{
+                        background: url('../../assets/images/tainha.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .image-tongquat{
+                        background: url('../../assets/images/tongquat.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .image-xetnghiem{
+                        background: url('../../assets/images/xetnghiem.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .image-tinhthan{
+                        background: url('../../assets/images/tinhthan.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .image-nhakhoa{
+                        background: url('../../assets/images/nhakhoa.png') center center no-repeat;
+                        background-size: cover;
+                        height: 50px;
+                        width: 50px;
+                    }
                 }
-                .image-tuxa{
-                    background: url('../../assets/images/tainha.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
-                }
-                .image-tongquat{
-                    background: url('../../assets/images/tongquat.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
-                }
-                .image-xetnghiem{
-                    background: url('../../assets/images/xetnghiem.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
-                }
-                .image-tinhthan{
-                    background: url('../../assets/images/tinhthan.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
-                }
-                .image-nhakhoa{
-                    background: url('../../assets/images/nhakhoa.png') center center no-repeat;
-                    background-size: cover;
-                    height: 50px;
-                    width: 50px;
-                }
-            }
+        }
             b {
                 font-size: 20px;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.26);
