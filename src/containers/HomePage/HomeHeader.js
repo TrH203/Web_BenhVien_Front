@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import "./HomeHeader.scss";
 import { FormattedMessage } from 'react-intl';
-
 class HomeHeader extends Component {
     constructor(props) {
         super(props);
@@ -12,8 +11,9 @@ class HomeHeader extends Component {
     }
 
     render() {
-        // hoang trong hien
-        { console.log(this.props); }
+        // * hong trong hien
+        { console.log(this.props) }
+        // ! test1
         // hoang trong hien add 2
         return (
             <>
@@ -43,7 +43,7 @@ class HomeHeader extends Component {
                         </div>
                         <div className='right-content'>
                             <div className='inner-div-right'>
-                                <img src='https://bookingcare.vn/assets/icon/history.svg'></img>
+                                <img src='https://bookingcare.vn/assets/icon/history.svg' alt='history'></img>
                                 <div><FormattedMessage id='home-header.appointments' /></div>
                             </div>
                             <div className='inner-div-right'><img src='https://bookingcare.vn/assets/icon/support_agent.svg'></img>
@@ -113,7 +113,6 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-
             </>
         );
     }
