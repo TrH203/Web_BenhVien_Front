@@ -14,7 +14,7 @@ class HomeHeader extends Component {
     render() {
         // hoang trong hien
         { console.log(this.props); }
-        { console.log(this.state); }
+        // hoang trong hien add 2
         return (
             <>
                 <div className='home-header-container'>
