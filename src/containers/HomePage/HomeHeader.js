@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import "./HomeHeader.scss";
 import { FormattedMessage } from 'react-intl';
+import { LANGUAGES } from '../../utils';
+import { changeLanguage } from '../../store/actions';
 class HomeHeader extends Component {
     constructor(props) {
         super(props);
@@ -10,18 +12,20 @@ class HomeHeader extends Component {
         }
     }
 
+    handleChangeLanguage = (lan) => {
+        this.props.changeLanguageRedux(lan);
+    }
     render() {
         // * hong trong hien
-        { console.log(this.props) }
-        // ! test1
         // hoang trong hien add 2
+        let { language } = this.props;
         return (
             <>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
                         <div className='left-content'>
                             <i class="fas fa-bars fa-lg menu-bar"></i>
-                            <img className='logo' src='https://bookingcare.vn/assets/icon/bookingcare-2020.svg'></img>
+                            <img className='logo' src='https://bookingcare.vn/assets/icon/bookingcare-2020.svg' alt='background'></img>
                         </div>
                         <div className='center-content'>
                             <div className='child-center-content'>
@@ -46,12 +50,21 @@ class HomeHeader extends Component {
                                 <img src='https://bookingcare.vn/assets/icon/history.svg' alt='history'></img>
                                 <div><FormattedMessage id='home-header.appointments' /></div>
                             </div>
-                            <div className='inner-div-right'><img src='https://bookingcare.vn/assets/icon/support_agent.svg'></img>
+                            <div className='inner-div-right'><img src='https://bookingcare.vn/assets/icon/support_agent.svg' alt='support'></img>
                                 <div><FormattedMessage id='home-header.support' /></div>
                             </div>
-                            <div className={this.state.language === "vi" ? 'VI active' : "VI"}>VI</div>
-                            <div className={this.state.language === "en" ? 'EN active' : "EN"}>EN</div>
-
+                            <div className={language === LANGUAGES.VI ? 'VI active' : "VI"} onClick={() => { this.handleChangeLanguage(LANGUAGES.VI) }}>
+                                <div>
+                                    VI
+                                </div>
+                                <div className='vi-flag'></div>
+                            </div>
+                            <div className={language === LANGUAGES.EN ? 'EN active' : "EN"} onClick={() => { this.handleChangeLanguage(LANGUAGES.EN) }}>
+                                <div>
+                                    EN
+                                </div>
+                                <div className='en-flag'></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,11 +78,11 @@ class HomeHeader extends Component {
                         </div>
                         <div className='search-banner'>
                             <i class="fas fa-search"></i>
-                            <input placeholder={<FormattedMessage id='home-header.search-placeholder' />} />
+                            <input placeholder="Tìm kiếm của bạn" />
                         </div>
                         <div className='options'>
-                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg'></img>
-                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg'></img>
+                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg' alt='appstore'></img>
+                            <img src='https://bookingcare.vn/assets/icon/app-store-badge-black.svg' alt='appstore'></img>
                         </div>
                     </div>
                     <div className='content-down'>
@@ -128,6 +141,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageRedux: (language) => dispatch(changeLanguage(language))
     };
 };
 
