@@ -7,39 +7,45 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 class SpecialtyCarousel extends Component {
+    constructor(props) {
+        super(props);
+    }
+    image_urls = [
+        "../../../assets/images/anh1.png",
+        "../../../assets/images/anh2.png",
+        "../../../assets/images/anh3.png",
+        "../../../assets/images/anh1.png",
+        "../../../assets/images/anh2.png",
+        "../../../assets/images/anh3.png",
+        "../../../assets/images/anh1.png",
+        "../../../assets/images/anh2.png",
+    ]
+
     render() {
         let settings = {
             dots: false,
             infinite: true,
-            speed: 500,
+            speed: 800,
             slidesToShow: 4,
             slidesToScroll: 4
         };
         return (
             <div className='section-container'>
                 <div className='section-content'>
-                    <Slider {...settings}>
-                        <div>
-                            <h3>1</h3>
-                        </div>
-                        <div>
-                            <h3>2</h3>
-                        </div>
-                        <div>
-                            <h3>3</h3>
-                        </div>
-                        <div>
-                            <h3>4</h3>
-                        </div>
-                        <div>
-                            <h3>5</h3>
-                        </div>
-                        <div>
-                            <h3>6</h3>
-                        </div>
+                    <div className='title-div'>
+                        <div>Chuyen Khoa</div>
+                        <button>Xem them</button>
+                    </div>
+                    <Slider{...settings}>
+                        {this.image_urls.map(image => (
+                            <div div className="image-container" >
+                                <div className='slide-image'></div>
+                                <div>Co xuong khop</div>
+                            </div>
+                        ))}
                     </Slider>
-                </div>
-            </div>
+                </div >
+            </div >
         );
     }
 

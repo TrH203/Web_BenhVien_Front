@@ -11,6 +11,7 @@ class HomePage extends Component {
             <div className='homepage-container'>
                 <HomeHeader />
                 <SpecialtyCarousel />
+                <div style={{ height: "300px" }}></div>
             </div>
         );
     }
