@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import './CustomScrollbars.scss';
-
 class CustomScrollbars extends Component {
 
     ref = React.createRef();
 
-    getScrollLeft =()=>{
+    getScrollLeft = () => {
         const scrollbars = this.ref.current;
         return scrollbars.getScrollLeft();
     }
-    getScrollTop =()=>{
+    getScrollTop = () => {
         const scrollbars = this.ref.current;
         return scrollbars.getScrollTop();
     }
@@ -84,7 +83,7 @@ class CustomScrollbars extends Component {
     };
 
     render() {
-        const { className, disableVerticalScroll, disableHorizontalScroll, children,...otherProps } = this.props;
+        const { className, disableVerticalScroll, disableHorizontalScroll, children, ...otherProps } = this.props;
         return (
             <Scrollbars
                 ref={this.ref}

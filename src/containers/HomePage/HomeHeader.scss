@@ -1,5 +1,5 @@
 .home-header-container{
-    height: 120px;
+    height: 90px;
     width: 100%;
     background-color: rgb(255, 255, 255);
     .home-header-content{
@@ -27,7 +27,7 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            width: 60%;
+            width: 55%;
             font-size: 15px;
             .title{
                 margin-top: 0px;
@@ -48,7 +48,7 @@
 
         }
         .right-content{
-            width: 20%;
+            width: 25%;
             display: flex;
             justify-content: end;
             .inner-div-right{
@@ -109,7 +109,7 @@
     opacity: 0.88;
     background-size: cover;
     width: 100%;
-    height: 1000px;
+    height: 800px;
     .content-up{
         height: 50%;
         background-image: linear-gradient(180deg, #00000055, rgba(255, 255, 255, 0));
@@ -165,7 +165,7 @@
         display: flex;
         justify-content: space-around;
         // padding-bottom: 20px;
-        background: linear-gradient(to top, #ffffff, #ffffff00);
+        background: linear-gradient(to top, #ffffffca, #ffffff00);
         .options{
             display: flex;
             width: 100%;
@@ -173,7 +173,7 @@
             align-items: flex-end;
             .inner-down{
                 width: 200px;
-                height: 150px;
+                padding-bottom: 20px;
                 text-align: center;
                 .image-container{
                     margin: auto;
@@ -228,7 +228,7 @@
                 }
         }
             b {
-                font-size: 20px;
+                font-size: 16px;
                 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.26);
             }
         }

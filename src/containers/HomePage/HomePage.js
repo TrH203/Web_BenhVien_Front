@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import HomeHeader from './HomeHeader';
+import SpecialtyCarousel from './Section/SpecialtyCarousel';
 import "./HomePage.scss";
 class HomePage extends Component {
 
@@ -9,6 +10,7 @@ class HomePage extends Component {
         return (
             <div className='homepage-container'>
                 <HomeHeader />
+                <SpecialtyCarousel />
             </div>
         );
     }
