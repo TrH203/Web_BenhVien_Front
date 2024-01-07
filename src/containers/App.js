@@ -20,6 +20,7 @@ import HomePage from "./HomePage/HomePage.js";
 
 import { CustomToastCloseButton } from '../components/CustomToast';
 import ConfirmModal from '../components/ConfirmModal';
+import CustomScrollbars from '../components/CustomScrollbars.js';
 
 class App extends Component {
 
@@ -50,13 +51,15 @@ class App extends Component {
                         {this.props.isLoggedIn && <Header />}
 
                         <span className="content-container">
-                            <Switch>
-                                <Route path={path.HOME} exact component={(Home)} />
-                                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
-                                <Route path={path.HOMEPAGE} component={(HomePage)} />
+                            <CustomScrollbars style={{ height: '100vh', width: '100%' }}>
+                                <Switch>
+                                    <Route path={path.HOME} exact component={(Home)} />
+                                    <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
+                                    <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                                    <Route path={path.HOMEPAGE} component={(HomePage)} />
 
-                            </Switch>
+                                </Switch>
+                            </CustomScrollbars>
                         </span>
 
                         <ToastContainer
