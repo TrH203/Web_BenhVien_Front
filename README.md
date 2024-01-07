@@ -1,3 +1,6 @@
+### Frist Look
+![Screenshot 2024-01-07 at 23 55 39](https://github.com/TrH203/Web_BenhVien_Front/assets/96675314/ddbf3adb-2eec-46c6-a50c-201c87e638ef)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
