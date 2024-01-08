@@ -1,12 +1,14 @@
 .home-header-container{
     height: 90px;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 2;
+    background-color: white;
     .home-header-content{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 100%;
+        height: inherit;
         width: 90%;
         margin: auto;
         .left-content{
@@ -105,6 +107,7 @@
 }
 
 .home-header-banner{
+    padding-top: 90px;
     background: url("../../assets/images/background-3.jpg") center center no-repeat;
     opacity: 0.88;
     background-size: cover;
@@ -172,6 +175,7 @@
             justify-content: space-around;
             align-items: flex-end;
             .inner-down{
+                height: 120px;
                 width: 200px;
                 padding-bottom: 20px;
                 text-align: center;
