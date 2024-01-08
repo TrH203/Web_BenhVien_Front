@@ -1,6 +1,6 @@
 .section-container{
     height: 400px;
-    background-color: antiquewhite;
+    background-color: rgba(220, 220, 220, 0.676);
     display: flex;
     justify-content: center;
     // overite library
@@ -26,27 +26,16 @@
                 transition: 0.4s;
             }
             button:hover{
-                background-color: rgb(210, 210, 15);
+                background-color: rgb(250, 221, 95);
                 color: white;
                 
             }
         }
-        .slick-next{
-            //background-color: red;
-            right: 25px;
-            z-index: 1000;
-            top: 150px;
-        }
-        .slick-prev{
-            left: 25px;
-            top: 150px;
-            //background-color: green;
-            z-index: 1000;
-        }
         .image-container{
-            height: 250px;
-            width: 360px !important;
-            border: 1px solid red;
+            font-size: 15px;
+            height: 230px;
+            width: 375px !important;
+            //border: 1px solid red;
             //border: 1px solid rebeccapurple;
             display: flex;
             align-items: center;

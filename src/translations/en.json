@@ -136,6 +136,8 @@
         "general-examination": "General Examination",
         "lab-test": "Lab Test",
         "mental-health-examination": "Mental Health Examination",
-        "dental-examination": "Dental Examination"
+        "dental-examination": "Dental Examination",
+        "popular-specialties": "Popular Specialties",
+        "see-more": "See More"
     }
 }
