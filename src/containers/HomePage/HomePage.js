@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import HomeHeader from './HomeHeader';
-import SpecialtyCarousel from './Section/SpecialtyCarousel';
-import MedicalFacility from './Section/MedicalFacility';
-import Doctor from './Section/Doctor';
-import HandBook from './Section/HandBook';
 import HomeFooter from './HomeFooter';
+// import SpecialtyCarousel from './Section/SpecialtyCarousel';
+// import MedicalFacility from './Section/MedicalFacility';
+// import Doctor from './Section/Doctor';
+// import HandBook from './Section/HandBook';
+
+import * as Section from "./Section";
+
 import "./HomePage.scss";
 class HomePage extends Component {
 
@@ -14,10 +17,11 @@ class HomePage extends Component {
         return (
             <div className='homepage-container'>
                 <HomeHeader />
-                <SpecialtyCarousel />
-                <MedicalFacility />
-                <Doctor />
-                <HandBook />
+                <Section.SpecialtyCarousel />
+                <Section.MedicalFacility />
+                <Section.Doctor />
+                <Section.HandBook />
+                <Section.About />
                 <HomeFooter />
             </div>
         );
