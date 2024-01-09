@@ -5,12 +5,12 @@ import { FormattedMessage } from 'react-intl';
 import ReactSlickArrowNext from "./customed-component/ReactSlickArrowNext";
 import ReactSlickArrowPrev from "./customed-component/ReactSlickArrowPrev";
 
-import "./SpecialtyCarousel.scss";
+import "./Doctor.scss";
 import Slider from 'react-slick';
 // Import css files
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-class SpecialtyCarousel extends Component {
+class Doctor extends Component {
     constructor(props) {
         super(props);
     }
@@ -36,17 +36,19 @@ class SpecialtyCarousel extends Component {
             prevArrow: <ReactSlickArrowPrev />
         };
         return (
-            <div className='section-ck-container'>
+            <div className='section-bs-container'>
                 <div className='section-content'>
                     <div className='title-div'>
-                        <div><FormattedMessage id='home-header.popular-specialties' /></div>
+                        <div><FormattedMessage id='home-header.popular-doctor' /></div>
                         <button><FormattedMessage id='home-header.see-more' /></button>
                     </div>
                     <Slider{...settings}>
                         {this.image_urls.map((image, index) => (
                             <div div className="image-container" >
                                 <div className='slide-image'></div>
-                                <div><FormattedMessage id='home-header.popular-specialties' /> {index + 1}</div>
+                                <div className='doctor-title'><FormattedMessage id='home-header.professor' /> {index + 1}</div>
+                                <div className='doctor-name'><FormattedMessage id='home-header.popular-doctor' /></div>
+                                <div className='doctor-speciality'><FormattedMessage id='home-header.musculoskeletal' /> {index + 1}</div>
                             </div>
                         ))}
                     </Slider>
@@ -67,4 +69,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SpecialtyCarousel);
+export default connect(mapStateToProps, mapDispatchToProps)(Doctor);

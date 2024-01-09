@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import ReactSlickArrowNext from "./customed-component/ReactSlickArrowNext";
 import ReactSlickArrowPrev from "./customed-component/ReactSlickArrowPrev";
 
-import "./SpecialtyCarousel.scss";
+import "./MedicalFacility.scss";
 import Slider from 'react-slick';
 // Import css files
 import "slick-carousel/slick/slick.css";
@@ -36,17 +36,17 @@ class SpecialtyCarousel extends Component {
             prevArrow: <ReactSlickArrowPrev />
         };
         return (
-            <div className='section-ck-container'>
+            <div className='section-mf-container'>
                 <div className='section-content'>
                     <div className='title-div'>
-                        <div><FormattedMessage id='home-header.popular-specialties' /></div>
+                        <div><FormattedMessage id='home-header.popular-medical-facility' /></div>
                         <button><FormattedMessage id='home-header.see-more' /></button>
                     </div>
                     <Slider{...settings}>
                         {this.image_urls.map((image, index) => (
                             <div div className="image-container" >
                                 <div className='slide-image'></div>
-                                <div><FormattedMessage id='home-header.popular-specialties' /> {index + 1}</div>
+                                <div><FormattedMessage id='home-header.popular-medical-facility' /> {index + 1}</div>
                             </div>
                         ))}
                     </Slider>

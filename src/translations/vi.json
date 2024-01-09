@@ -136,6 +136,14 @@
         "general-examination": "Khám tổng quát",
         "lab-test": "Xét nghiệm",
         "mental-health-examination": "Khám sức khỏe tâm thần",
-        "dental-examination": "Khám nha khoa"
+        "dental-examination": "Khám nha khoa",
+        "popular-specialties": "Chuyên Khoa Phổ Biến",
+        "popular-medical-facility": "Trung Tâm Y Tế Nổi Bật",
+        "popular-doctor": "Bác Sĩ Nỗi Bật",
+        "see-more": "Xem Thêm",
+        "musculoskeletal": "Cơ xương khớp",
+        "professor": "Giáo Sư",
+        "master": "Tiến Sĩ",
+        "handbook": "Cẩm Nang"
     }
 }

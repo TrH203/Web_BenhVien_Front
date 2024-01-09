@@ -136,6 +136,14 @@
         "general-examination": "General Examination",
         "lab-test": "Lab Test",
         "mental-health-examination": "Mental Health Examination",
-        "dental-examination": "Dental Examination"
+        "dental-examination": "Dental Examination",
+        "popular-specialties": "Popular Specialties",
+        "popular-medical-facility": "Popular Medical Facilities",
+        "popular-doctor": "Popular Doctor",
+        "see-more": "See More",
+        "musculoskeletal": "Musculoskeletal",
+        "professor": "Professor",
+        "master": "Master",
+        "handbook": "HandBook"
     }
 }

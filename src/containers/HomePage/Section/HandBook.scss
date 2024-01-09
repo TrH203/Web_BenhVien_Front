@@ -1,9 +1,9 @@
-.section-ck-container{
+.section-hb-container{
     height: 400px;
-    background-color: rgba(220, 220, 220, 0.341);
+    background-color: rgba(255, 255, 255, 0.341);
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     // overite library
     .section-content{
         //border: 1px solid red;
@@ -35,18 +35,29 @@
             }
         }
         .image-container{
+            border: 1px solid rgba(0, 0, 0, 0.41);
             font-size: 15px;
-            height: 230px;
-            width: 375px !important;
+            height: 275px;
+            width: 765px !important;
             //border: 1px solid red;
             //border: 1px solid rebeccapurple;
+            display: flex !important;
             .slide-image{
+                margin-right: 10px;
                 background: url("../../../assets/images/anh3.png");
                 background-position: center;
                 background-size: cover;
                 height: inherit;
+                width: 50%;
                 z-index: 1000;
             }
+            .handbook-title{
+                font-size: 20px;
+            }
+            
+        }
+        .image-container:hover{
+            color: rgb(0, 189, 195);
         }
     }
 }
