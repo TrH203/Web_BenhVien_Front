@@ -5,6 +5,8 @@ import HomeHeader from './HomeHeader';
 import SpecialtyCarousel from './Section/SpecialtyCarousel';
 import MedicalFacility from './Section/MedicalFacility';
 import Doctor from './Section/Doctor';
+import HandBook from './Section/HandBook';
+import HomeFooter from './HomeFooter';
 import "./HomePage.scss";
 class HomePage extends Component {
 
@@ -15,7 +17,8 @@ class HomePage extends Component {
                 <SpecialtyCarousel />
                 <MedicalFacility />
                 <Doctor />
-                <div style={{ height: "300px" }}></div>
+                <HandBook />
+                <HomeFooter />
             </div>
         );
     }

@@ -1,9 +1,9 @@
-.section-bs-container{
+.section-hb-container{
     height: 400px;
-    background-color: rgba(220, 220, 220, 0.342);
+    background-color: rgba(255, 255, 255, 0.341);
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     // overite library
     .section-content{
         //border: 1px solid red;
@@ -35,41 +35,29 @@
             }
         }
         .image-container{
+            border: 1px solid rgba(0, 0, 0, 0.41);
             font-size: 15px;
-            height: 290px;
-            width: 375px !important;
-            padding: 1ch;
+            height: 275px;
+            width: 765px !important;
             //border: 1px solid red;
             //border: 1px solid rebeccapurple;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 0, 0, 0.289);
+            display: flex !important;
             .slide-image{
-                margin: auto;
-                background: url("../../../assets/images/anh4.png");
+                margin-right: 10px;
+                background: url("../../../assets/images/anh3.png");
                 background-position: center;
-                border: 1px solid rgba(0, 0, 0, 0.281);
                 background-size: cover;
-                border-radius: 100%;
-                height: 180px;
-                width:180px;
+                height: inherit;
+                width: 50%;
                 z-index: 1000;
             }
-            .doctor-title{
-                font-size: 17px;
-                font-weight: bold;
-                text-align: center;
-            }
-            .doctor-name{
+            .handbook-title{
                 font-size: 20px;
-                text-align: center;
             }
-            .doctor-speciality{
-                font-size: 15px;
-                font-style: italic;
-                text-align: center;
-            }
+            
+        }
+        .image-container:hover{
+            color: rgb(0, 189, 195);
         }
     }
 }
