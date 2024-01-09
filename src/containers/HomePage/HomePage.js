@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import HomeHeader from './HomeHeader';
 import SpecialtyCarousel from './Section/SpecialtyCarousel';
+import MedicalFacility from './Section/MedicalFacility';
+import Doctor from './Section/Doctor';
 import "./HomePage.scss";
 class HomePage extends Component {
 
@@ -11,6 +13,8 @@ class HomePage extends Component {
             <div className='homepage-container'>
                 <HomeHeader />
                 <SpecialtyCarousel />
+                <MedicalFacility />
+                <Doctor />
                 <div style={{ height: "300px" }}></div>
             </div>
         );

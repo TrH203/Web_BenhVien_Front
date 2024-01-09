@@ -138,6 +138,11 @@
         "mental-health-examination": "Mental Health Examination",
         "dental-examination": "Dental Examination",
         "popular-specialties": "Popular Specialties",
-        "see-more": "See More"
+        "popular-medical-facility": "Popular Medical Facilities",
+        "popular-doctor": "Popular Doctor",
+        "see-more": "See More",
+        "musculoskeletal": "Musculoskeletal",
+        "professor": "Professor",
+        "master": "Master"
     }
 }
