@@ -158,17 +158,17 @@ class EditUserModal extends Component {
                                         name="gender"
                                         onChange={(event) => { this.handleChangeInput(event) }}
                                     >
-
-                                        {this.state.gender === 1 ?
-                                            <>
-                                                <option selected value="1">Male</option>
-                                                <option value="0">Female</option>
-                                            </>
-                                            :
-                                            <>
-                                                <option value="1">Male</option>
-                                                <option selected value="0">Female</option>
-                                            </>}
+                                        <>
+                                            {this.props.code.gender && this.props.code.gender.map((item, index) => {
+                                                return (
+                                                    <option selected={(1 - index) === parseInt(this.state.gender)} value={index}>
+                                                        {item.valueEn}
+                                                    </option>
+                                                )
+                                            })}
+                                        </>
+                                        {/* <option selected={this.state.gender === 1} value="1">Male</option>
+                                        <option selected={this.state.gender === 0} value="0">Female</option> */}
                                     </select>
                                 </div>
                                 <div className="col-md-3">
@@ -178,15 +178,15 @@ class EditUserModal extends Component {
                                         name="roleId"
                                         onChange={(event) => { this.handleChangeInput(event) }}
                                     >
-                                        {this.state.roleId === '0' ?
-                                            <>
-                                                <option selected value="0">Admin</option>
-                                                <option value="1">Doctor</option> </>
-                                            :
-                                            <>
-                                                <option value="0">Admin</option>
-                                                <option selected value="1">Doctor</option>
-                                            </>}
+                                        <>
+                                            {this.props.code.role && this.props.code.role.map((item, index) => {
+                                                return (
+                                                    <option selected={index === parseInt(this.state.roleId)} value={index}>
+                                                        {item.valueEn}
+                                                    </option>
+                                                )
+                                            })}
+                                        </>
                                     </select>
                                 </div>
                                 {this.state.showMissing && <div className='col-12 show-missing'>Missing Value</div>}

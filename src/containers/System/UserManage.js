@@ -88,6 +88,7 @@ class UserManage extends Component {
                     isOpen={this.state.openEditUserModal}
                     handleEditUserModalToggle={this.handleEditUserModalToggle}
                     updateDataTable={this.updateDataTable}
+                    code={code}
                 />
                 <div className='mx-3'>
                     <div className='col-12 mt-3 add-user-div'>
