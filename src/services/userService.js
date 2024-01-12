@@ -10,5 +10,4 @@ const UserLoginService = async (email, password) => {
     }
 
 }
-
 export default UserLoginService;

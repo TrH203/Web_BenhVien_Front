@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import "./UserManage.scss";
-import { getUserService, deleteUserService } from "../../services/adminService";
+import { getUserService, deleteUserService, getCode4Create } from "../../services/adminService";
 import CreateUserModal from './CreateUserModal';
 import EditUserModal from './EditUserModal';
 import { emitter } from "../../utils/emitter";
@@ -15,6 +15,7 @@ class UserManage extends Component {
             openCreateUserModal: false,
             openEditUserModal: false,
             data4EditUser: {},
+            code4createModal: []
         }
     }
     async componentDidMount() {
@@ -24,6 +25,7 @@ class UserManage extends Component {
                 arrUsers: response.users
             })
         }
+        this.getCode();
         // console.log(this.state.arrUsers);
     }
 
@@ -62,15 +64,25 @@ class UserManage extends Component {
             })
         }
     }
+    getCode = async () => { // get code from adminservice
+        let code4Create = await getCode4Create("gender", "role");
+        if (code4Create) {
+            this.setState({
+                code4createModal: { gender: code4Create[0].code, role: code4Create[1].code }
+            })
+        }
+    }
     render() {
         let arrUsers = this.state.arrUsers;
+        let code = this.state.code4createModal;
         return (
-            <div className='user-manage-body'>
+            <div className='user-manage-body' >
                 <div className="text-center">Manage users</div>
                 <CreateUserModal
                     isOpen={this.state.openCreateUserModal}
                     handleCreateUserModalToggle={this.handleCreateUserModalToggle}
                     updateDataTable={this.updateDataTable}
+                    code={code}
                 />
                 <EditUserModal
                     isOpen={this.state.openEditUserModal}

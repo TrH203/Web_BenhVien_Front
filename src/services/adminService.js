@@ -65,10 +65,24 @@ const deleteUserService = (id) => {
         }
     })
 }
+const getCode4Create = async (...types) => {
+    try {
+        let results = [];
+        for (let type of types) {
+            let rs = await axios.get("http://localhost:8080/api/get-code?type=" + type);
+            results.push(rs);
+        }
+        return results;
+    } catch (e) {
+        console.log(e);
+        return {};
+    }
+}
 export {
     adminService,
     getUserService,
     createNewUserService,
     editUserService,
     deleteUserService,
+    getCode4Create,
 };

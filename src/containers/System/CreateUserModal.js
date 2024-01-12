@@ -64,6 +64,8 @@ class CreateUserModal extends Component {
         copyState[id] = event.target.value;
         this.setState({
             ...copyState
+        }, () => {
+            console.log(this.state);
         })
 
     }
@@ -73,7 +75,6 @@ class CreateUserModal extends Component {
 
     }
     render() {
-        // console.log(this.props);
         return (
             <div>
                 <Modal isOpen={this.props.isOpen}
@@ -113,15 +114,27 @@ class CreateUserModal extends Component {
                                 <div className="col-md-3">
                                     <label for="inputState1" className="form-label">Sex</label>
                                     <select id="inputState1" className="form-select" name="gender" onChange={(event) => { this.handleChangeInput(event, 'gender') }}>
-                                        <option selected value="1">Male</option>
-                                        <option value="0">Female</option>
+                                        {this.props.code.gender && this.props.code.gender.map((item, index) => {
+                                            return (
+                                                <option value={1 - index}>
+                                                    {item.valueEn}
+                                                </option>
+                                            )
+                                        })}
                                     </select>
                                 </div>
                                 <div className="col-md-3">
                                     <label for="inputState2" className="form-label">Role</label>
                                     <select id="inputState2" className="form-select" name="roleId" onChange={(event) => { this.handleChangeInput(event, 'roleId') }}>
-                                        <option selected value="0">Admin</option>
-                                        <option value="1">Doctor</option>
+                                        {this.props.code.role && this.props.code.role.map((item, index) => {
+                                            return (
+                                                <option value={index}>
+                                                    {item.valueEn}
+                                                </option>
+                                            )
+                                        })}
+                                        {/* <option selected value="0">Admin</option>
+                                        <option value="1">Doctor</option> */}
                                     </select>
                                 </div>
                                 {this.state.showMissing && <div className='col-12 show-missing'>Missing Value</div>}
@@ -133,6 +146,7 @@ class CreateUserModal extends Component {
                         <Button className="create-btn" color="primary" onClick={async () => {
                             if (this.handleMissingValue()) {
                                 let status = await createNewUserService(this.state);
+                                // console.log(this.state);
                                 if (status.errCode !== 0) {
                                     alert(status.message);
                                 }
