@@ -77,7 +77,9 @@ class UserManage extends Component {
         let code = this.state.code4createModal;
         return (
             <div className='user-manage-body' >
-                <div className="text-center">Manage users</div>
+                <div className="text-center">
+                    <FormattedMessage id="user-manage.manageUsers" defaultMessage="Manage users" />
+                </div>
                 <CreateUserModal
                     isOpen={this.state.openCreateUserModal}
                     handleCreateUserModalToggle={this.handleCreateUserModalToggle}
@@ -94,18 +96,30 @@ class UserManage extends Component {
                     <div className='col-12 mt-3 add-user-div'>
                         <button className='add-user-btn' onClick={this.handleCreateUserModalToggle}>
                             <i class="fas fa-plus"></i>
-                            Create new user
+                            <FormattedMessage id="user-manage.createNewUser" defaultMessage="Create new user" />
                         </button>
                     </div>
                     <table className="simple-table">
                         <thead>
                             <tr className='table-header'>
-                                <th>Id</th>
-                                <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Action</th>
+                                <th>
+                                    <FormattedMessage id="user-manage.id" defaultMessage="Id" />
+                                </th>
+                                <th>
+                                    <FormattedMessage id="user-manage.email" defaultMessage="Email" />
+                                </th>
+                                <th>
+                                    <FormattedMessage id="user-manage.firstName" defaultMessage="First Name" />
+                                </th>
+                                <th>
+                                    <FormattedMessage id="user-manage.lastName" defaultMessage="Last Name" />
+                                </th>
+                                <th>
+                                    <FormattedMessage id="user-manage.phoneNumber" defaultMessage="Phone Number" />
+                                </th>
+                                <th>
+                                    <FormattedMessage id="user-manage.action" defaultMessage="Action" />
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -127,14 +141,14 @@ class UserManage extends Component {
                                                             emitter.emit("Fill_Update_User_Data", data4EditUser);
                                                         }
                                                     }}>
-                                                        Edit
+                                                        <FormattedMessage id="user-manage.edit" defaultMessage="Edit" />
                                                         <i className="far fa-edit"></i>
                                                     </button>
                                                     <button className='del' id={item.id} onClick={async (event) => {
                                                         await this.handleDeleteUserModalToggle(item.id);
                                                     }}
                                                     >
-                                                        Delete
+                                                        <FormattedMessage id="user-manage.delete" defaultMessage="Delete" />
                                                         <i class="fas fa-user-minus"></i>
                                                     </button>
                                                 </div>

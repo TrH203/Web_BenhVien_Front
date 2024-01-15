@@ -145,5 +145,15 @@
         "professor": "Giáo Sư",
         "master": "Tiến Sĩ",
         "handbook": "Cẩm Nang"
-    }
+    },
+    "user-manage": {
+            "manageUsers" : "Quản lý người dùng",
+            "id":"Mã người dùng",
+            "email":"Email",
+            "firstName":"Tên",
+            "lastName":"Họ",
+            "phoneNumber":"Số điện thoại",
+            "action":"Hành động",
+            "delete":"Xóa"
+        }
 }
