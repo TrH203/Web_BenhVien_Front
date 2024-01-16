@@ -5,13 +5,13 @@ export const adminMenu = [
                 name: 'menu.user.crud-user', link: "/system/crud-user"
             },
             {
-                name: "menu.user.crud-redux", link: "/system/crud-user",
+                name: "menu.user.crud-redux", link: "/system/crud-redux",
             },
             {
-                name: "menu.user.manage-doctor", link: "system/manage-doctor",
+                name: "menu.user.manage-doctor", link: "/system/manage-doctor",
             },
             {
-                name: "menu.user.manage-admin", link: "system/manage-admin"
+                name: "menu.user.manage-admin", link: "/system/manage-admin"
             }
             // { name: 'menu.user.system.system-parameter.header', link: '/system/system-parameter' },
         ]
