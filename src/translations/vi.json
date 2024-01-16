@@ -153,6 +153,7 @@
             "lastName":"Họ",
             "phoneNumber":"Số điện thoại",
             "action":"Hành động",
-            "delete":"Xóa"
+            "delete":"Xóa",
+            "createNewUser":"Tạo người dùng"
         }
 }

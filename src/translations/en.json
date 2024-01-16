@@ -144,5 +144,18 @@
         "professor": "Professor",
         "master": "Master",
         "handbook": "HandBook"
+    },
+    "user-manage": {
+        "manageUsers": "Manage User",
+        "id": "User ID",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phoneNumber": "Phone Number",
+        "action": "Action",
+        "delete": "Delete",
+        "createNewUser":"Create New User"
     }
+      
+      
 }
