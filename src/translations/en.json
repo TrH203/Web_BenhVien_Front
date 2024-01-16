@@ -26,16 +26,25 @@
         "userpass-wrong": "Invalid username or password!"
     },
     "menu": {
-        "system": {
-            "header": "System",
-            "system-administrator": {
-                "header": "System Administrator",
-                "user-manage": "User manage",
-                "user-redux": "User manage redux"
-            },
-            "system-parameter": {
-                "header": "System-parameter"
-            }
+        "user": {
+            "header": "Manage User",
+            "crud-user": "CRUD User",
+            "crud-redux": "CRUD Redux",
+            "manage-doctor": "Manage Doctor",
+            "manage-admin": "Manage Admin"
+            
+        },
+        "clinics":{
+            "header":"Manage Clinics",
+            "manage-clinics": "Manane Clinics"
+        },
+        "specialty":{
+            "header":"Manage Specialty",
+            "manage-specialty": "Manage Specialty"
+        },
+        "handbook":{
+            "header":"Manage Handbook",
+            "manage-handbook": "Manage HandBook"
         }
     },
     "system": {

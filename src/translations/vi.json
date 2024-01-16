@@ -26,16 +26,24 @@
         "userpass-wrong": "Sai tên đăng nhập hoặc mật khẩu!"
     },
     "menu": {
-        "system": {
-            "header": "Hệ thống",
-            "system-administrator": {
-                "header": "Quản trị hệ thống",
-                "user-manage": "Quản lý người sử dụng",
-                "user-redux": "Quản lý người dùng Redux"
-            },
-            "system-parameter": {
-                "header": "Tham số hệ thống"
-            }
+        "user": {
+            "header": "Quản lý Người dùng",
+            "crud-user": "CRUD Người dùng",
+            "crud-redux": "CRUD Redux",
+            "manage-doctor": "Quản lý Bác sĩ",
+            "manage-admin": "Quản lý Admin"
+        },
+        "clinics": {
+            "header": "Quản lý Phòng khám",
+            "manage-clinics": "Quản lý Phòng khám"
+        },
+        "specialty": {
+            "header": "Quản lý Chuyên khoa",
+            "manage-specialty": "Quản lý Chuyên khoa"
+        },
+        "handbook": {
+            "header": "Quản lý Cẩm Nang",
+            "manage-handbook": "Quản lý Cẩm Nang"
         }
     },
     "system": {

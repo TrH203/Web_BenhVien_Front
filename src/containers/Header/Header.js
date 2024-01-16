@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
-import { adminMenu } from './menuApp';
+import { adminMenu, clinicsMenu, specialityMenu, handbookMenu } from './menuApp';
 import './Header.scss';
 import { LANGUAGES } from "../../utils/constant"
 import { changeLanguage } from '../../store/actions';
@@ -21,6 +21,10 @@ class Header extends Component {
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
                     <Navigator menus={adminMenu} />
+                    <Navigator menus={clinicsMenu} />
+                    <Navigator menus={specialityMenu} />
+                    <Navigator menus={handbookMenu} />
+
                 </div>
 
                 {/* switch language and logout button*/}

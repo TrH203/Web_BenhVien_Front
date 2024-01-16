@@ -1,5 +1,7 @@
 @import "../../styles/common.scss";
-
+.header-tabs-container{
+    display: flex;
+}
 .header-container {
     z-index: 99;
     display: flex;
