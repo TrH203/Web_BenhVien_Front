@@ -5,7 +5,7 @@ import * as actions from "../../store/actions";
 import Navigator from '../../components/Navigator';
 import { adminMenu } from './menuApp';
 import './Header.scss';
-
+import { LANGUAGES } from "../../utils/constant"
 import { changeLanguage } from '../../store/actions';
 
 class Header extends Component {
@@ -26,11 +26,11 @@ class Header extends Component {
                 {/* switch language and logout button*/}
                 <div className='left-container'>
                     <div className='switch-language-container'>
-                        <div className={language === "vi" ? 'vi-container active' : "vi-container"} onClick={(e) => { this.handleSwitchLanguage("vi"); }}>
+                        <div className={language === "vi" ? 'vi-container active' : "vi-container"} onClick={(e) => { this.handleSwitchLanguage(LANGUAGES.VI); }}>
                             <div>VI</div>
                             <div className='vi-flag'></div>
                         </div>
-                        <div className={language === "en" ? 'en-container active' : "en-container"} onClick={(e) => { this.handleSwitchLanguage("en"); }}>
+                        <div className={language === "en" ? 'en-container active' : "en-container"} onClick={(e) => { this.handleSwitchLanguage(LANGUAGES.EN); }}>
                             <div>EN</div>
                             <div className='en-flag'></div>
                         </div>
