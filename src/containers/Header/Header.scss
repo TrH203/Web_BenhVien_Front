@@ -13,8 +13,16 @@
     .left-container{
         display: flex;
         justify-content: space-around;
-        width: 200px;
+        width: 400px;
         height: inherit;
+        .wellcome{
+            width: fit-content;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
         .switch-language-container{
             width: 150px;
             height: inherit;

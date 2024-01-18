@@ -7,14 +7,14 @@ import { adminMenu, clinicsMenu, specialityMenu, handbookMenu } from './menuApp'
 import './Header.scss';
 import { LANGUAGES } from "../../utils/constant"
 import { changeLanguage } from '../../store/actions';
-
+import { FormattedMessage } from 'react-intl';
 class Header extends Component {
 
     handleSwitchLanguage = (value) => {
         this.props.processChangeLanguague(value);
     }
     render() {
-        const { processLogout, language } = this.props;
+        const { processLogout, language, adminInfo } = this.props;
 
         return (
             <div className="header-container">
@@ -29,6 +29,7 @@ class Header extends Component {
 
                 {/* switch language and logout button*/}
                 <div className='left-container'>
+                    <div className='wellcome'><FormattedMessage id="user-manage.wellcome" />{" " + adminInfo.firstName + " " + adminInfo.lastName}</div>
                     <div className='switch-language-container'>
                         <div className={language === "vi" ? 'vi-container active' : "vi-container"} onClick={(e) => { this.handleSwitchLanguage(LANGUAGES.VI); }}>
                             <div>VI</div>
@@ -52,7 +53,8 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.admin.isLoggedIn,
-        language: state.app.language
+        language: state.app.language,
+        adminInfo: state.admin.adminInfo,
     };
 };
 

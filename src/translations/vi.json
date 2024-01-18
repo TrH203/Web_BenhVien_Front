@@ -162,6 +162,7 @@
             "phoneNumber":"Số điện thoại",
             "action":"Hành động",
             "delete":"Xóa",
-            "createNewUser":"Tạo người dùng"
+            "createNewUser":"Tạo người dùng",
+            "wellcome": "Chào mừng:"
         }
 }

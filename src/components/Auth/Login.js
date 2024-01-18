@@ -12,7 +12,8 @@ class Login extends Component {
         super(props);
         this.state = {
             hidePassword: true,
-            loginError: {},
+            loginInfo: {},
+            userInfo: {},
         }
     }
     redirectToSystemPage = () => {
@@ -36,10 +37,17 @@ class Login extends Component {
 
     handOnChangeLoginBtn = async () => {
         this.setState({
-            loginError: await UserLoginService(this.state.username, this.state.password)
+            loginInfo: await UserLoginService(this.state.username, this.state.password)
         })
-        if (this.state.loginError.errCode === 0) {
-            this.processLogin();
+        if (this.state.loginInfo.errCode === 0) {
+            this.setState({
+                userInfo: this.state.loginInfo.user
+            }, () => {
+                this.processLogin();
+            });
+
+
+
         }
     }
 
@@ -66,22 +74,20 @@ class Login extends Component {
     }
 
     processLogin = () => {
-        const { username, password } = this.state;
-
         const { adminLoginSuccess, adminLoginFail } = this.props;
         // let loginBody = {
         //     username: 'admin',
         //     password: '123456'
         // }
         //sucess
-        let adminInfo = {
-            "tlid": "0",
-            "tlfullname": "Administrator",
-            "custype": "A",
-            "accessToken": "eyJhbGciOiJIU"
-        }
+        // let adminInfo = {
+        //     "tlid": "0",
+        //     "tlfullname": "Administrator",
+        //     "custype": "A",
+        //     "accessToken": "eyJhbGciOiJIU"
+        // }
 
-        adminLoginSuccess(adminInfo);
+        adminLoginSuccess(this.state.userInfo);
         // this.refresh();
         this.redirectToSystemPage();
         // try {
@@ -92,7 +98,6 @@ class Login extends Component {
 
     }
     render() {
-
         return (
             // write with JSX code
             <div className='login-background'>
@@ -120,7 +125,7 @@ class Login extends Component {
                             </div>
                         </div>
                         {<div className='col-12 login-error'>
-                            {this.showLoginError(this.state.loginError.message) ? this.state.loginError.message : " "}
+                            {this.showLoginError(this.state.loginInfo.message) ? this.state.loginInfo.message : " "}
                         </div>}
                         <div className='col-12 login-input'>
                             <button className='btn-login' onClick={this.handOnChangeLoginBtn}>
@@ -147,7 +152,7 @@ class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
     };
 };
 

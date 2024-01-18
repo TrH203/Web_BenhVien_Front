@@ -163,7 +163,8 @@
         "phoneNumber": "Phone Number",
         "action": "Action",
         "delete": "Delete",
-        "createNewUser":"Create New User"
+        "createNewUser":"Create New User",
+        "wellcome":"Wellcome:"
     }
       
       

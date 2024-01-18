@@ -18,7 +18,8 @@ class HomeHeader extends Component {
     render() {
         // * hong trong hien
         // hoang trong hien add 2
-        let { language } = this.props;
+        let { language, adminInfo } = this.props;
+        // console.log("check: ",adminInfo);
         return (
             <>
                 <div className='home-header-container'>
@@ -135,7 +136,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.admin.isLoggedIn,
-        language: state.app.language
+        language: state.app.language,
     };
 };
 
