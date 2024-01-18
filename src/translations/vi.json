@@ -164,5 +164,12 @@
             "delete":"Xóa",
             "createNewUser":"Tạo người dùng",
             "wellcome": "Chào mừng:"
-        }
+    },
+    "redux":{
+        "email":"Email",
+        "password":"Mật khẩu",
+        "lastName":"Họ",
+        "firstName":"Tên"
+    }
+
 }

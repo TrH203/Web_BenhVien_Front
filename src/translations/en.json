@@ -165,6 +165,12 @@
         "delete": "Delete",
         "createNewUser":"Create New User",
         "wellcome":"Wellcome:"
+    },
+    "redux":{
+        "email":"Email",
+        "password":"Password",
+        "lastName":"Last Name",
+        "firstName":"First Name"
     }
       
       
