@@ -69,6 +69,8 @@ class UserManage extends Component {
         if (code4Create) {
             this.setState({
                 code4createModal: { gender: code4Create[0].code, role: code4Create[1].code }
+            }, () => {
+                emitter.emit("EVENT_CODE_FOR_REDUX", this.state.code4createModal);
             })
         }
     }

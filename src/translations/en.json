@@ -170,7 +170,13 @@
         "email":"Email",
         "password":"Password",
         "lastName":"Last Name",
-        "firstName":"First Name"
+        "firstName":"First Name",
+        "phoneNumber":"Phone Number",
+        "address":"Address",
+        "gender": "Gender",
+        "position": "Position",
+        "role":"Role",
+        "anh":"Picture"
     }
       
       

@@ -169,7 +169,13 @@
         "email":"Email",
         "password":"Mật khẩu",
         "lastName":"Họ",
-        "firstName":"Tên"
+        "firstName":"Tên",
+        "phoneNumber":"Số điện thoại",
+        "address":"Địa chỉ",
+        "gender": "Giới Tính",
+        "position": "Vị Trí",
+        "role":"Vai trò",
+        "anh":"Ảnh"
     }
 
 }
