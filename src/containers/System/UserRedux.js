@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 import "./UserRedux.scss"
 import { connect } from 'react-redux';
 import { getCode4Create } from "../../services/adminService";
-
+import { LANGUAGES } from '../../utils';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -32,12 +32,16 @@ class UserRedux extends Component {
             console.log(this.state);
         })
     }
-    async componentDidMount() {
-        let copyState = { ...this.state };
-        copyState["code"] = await getCode4Create("gender", "role");
-        this.setState({
-            ...copyState
-        }, () => { console.log(this.state); })
+    async getCode() {
+        let code = await getCode4Create("gender", "role");
+        if (Object.keys(code).length !== 0) {
+            this.setState({
+                code: code
+            }, () => { console.log(this.state); });
+        }
+    }
+    componentDidMount() {
+        this.getCode();
     }
 
     render() {
@@ -81,7 +85,7 @@ class UserRedux extends Component {
                                         <>
                                             <option>Choose...</option>
                                             {(code.length !== 0) && code[0].code.map((item, index) => {
-                                                return (this.props.language === "vi" ?
+                                                return (this.props.language === LANGUAGES.VI`` ?
                                                     <option value={1 - index}>{item.valueVi}</option> :
                                                     <option value={1 - index}>{item.valueEn}</option>)
                                             })}
@@ -94,7 +98,7 @@ class UserRedux extends Component {
                                         <>
                                             <option>Choose...</option>
                                             {(code.length !== 0) && code[1].code.map((item, index) => {
-                                                return (this.props.language === "vi" ?
+                                                return (this.props.language === LANGUAGES.VI ?
                                                     <option value={index}>{item.valueVi}</option> :
                                                     <option value={index}>{item.valueEn}</option>)
                                             })}
@@ -108,7 +112,7 @@ class UserRedux extends Component {
                                             <option>Choose...</option>
                                             {(code.length !== 0) && code[1].code.map((item, index) => {
                                                 return (
-                                                    this.props.language === "vi" ?
+                                                    this.props.language === LANGUAGES.VI`` ?
                                                         <option value={index}>{item.valueVi}</option> :
                                                         <option value={index}>{item.valueEn}</option>)
                                             })}

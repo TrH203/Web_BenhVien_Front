@@ -14,7 +14,7 @@ class MenuGroup extends Component {
                 <div className="menu-group-name">
                     <FormattedMessage id={name} />
                 </div>
-                <ul className="menu-list list-unstyled">
+                <ul className="menu-list list-unstyled" >
                     {children}
                 </ul>
             </li>
@@ -48,10 +48,10 @@ class Menu extends Component {
                         </div>
                     </Fragment>
                 ) : (
-                        <Link to={link} className="menu-link" onClick={onLinkClick}>
-                            <FormattedMessage id={name} />
-                        </Link>
-                    )}
+                    <Link to={link} className="menu-link" onClick={onLinkClick}>
+                        <FormattedMessage id={name} />
+                    </Link>
+                )}
             </li>
         );
     }
@@ -66,7 +66,7 @@ class SubMenu extends Component {
     render() {
         const { name, link, onLinkClick } = this.props;
         return (
-            <li className={"sub-menu " + this.getItemClass(link)}>
+            <li className={"sub-menu " + this.getItemClass(link)} >
                 <Link to={link} className="sub-menu-link" onClick={onLinkClick}>
                     <FormattedMessage id={name} />
                 </Link>

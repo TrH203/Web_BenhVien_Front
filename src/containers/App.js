@@ -13,7 +13,7 @@ import "./App.scss"
 import Home from '../routes/Home';
 // import Login from '../routes/Login';
 import Login from '../components/Auth/Login';
-import Header from './Header/Header';
+// import Header from './Header/Header';
 import System from '../routes/System';
 
 import HomePage from "./HomePage/HomePage.js";
