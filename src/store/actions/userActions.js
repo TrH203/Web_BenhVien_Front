@@ -28,3 +28,29 @@ export const fetchGenderSuccess = (code) => ({
 export const fetchGenderFail = () => ({
     type: actionTypes.FETCH_GENDER_FAIL
 })
+
+export const fetchRoleStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getCode4Create("role");
+            console.log(res);
+            if (res && res.errCode === 0) {
+                dispatch(fetchRoleSuccess(res.code));
+            }
+            else {
+                dispatch(fetchRoleFail());
+            }
+        } catch (e) {
+            fetchRoleFail();
+            console.log(e);
+        }
+    }
+}
+
+export const fetchRoleSuccess = (code) => ({
+    type: actionTypes.FETCH_ROLE_SUCCESS,
+    code: code
+})
+export const fetchRoleFail = () => ({
+    type: actionTypes.FETCH_ROLE_FAIL
+})

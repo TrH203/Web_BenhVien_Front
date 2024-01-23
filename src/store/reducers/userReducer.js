@@ -13,11 +13,28 @@ const userReducer = (state = initialState, action) => {
                 ...state,
             }
         case actionTypes.FETCH_GENDER_SUCCESS:
+            let copyState = { ...state };
+            copyState.genders = action.code;
             return {
-                ...state,
-                genders: action.code
+                ...copyState,
             }
         case actionTypes.FETCH_GENDER_FAIL:
+            console.log("FAIL");
+            return {
+                ...state
+            }
+        ///
+        case actionTypes.FETCH_ROLE_START:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ROLE_SUCCESS:
+            let copyState1 = { ...state };
+            copyState1.roles = action.code;
+            return {
+                ...copyState1,
+            }
+        case actionTypes.FETCH_ROLE_FAIL:
             console.log("FAIL");
             return {
                 ...state
