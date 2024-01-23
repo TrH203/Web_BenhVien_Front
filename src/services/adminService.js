@@ -72,7 +72,13 @@ const getCode4Create = async (...types) => {
             let rs = await axios.get("http://localhost:8080/api/get-code?type=" + type);
             results.push(rs);
         }
-        return results;
+        if (results.length === 1) {
+            return results[0];
+        }
+        else {
+            return results;
+        }
+
     } catch (e) {
         console.log(e);
         return {};

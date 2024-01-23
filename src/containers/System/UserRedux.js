@@ -5,6 +5,7 @@ import "./UserRedux.scss"
 import { connect } from 'react-redux';
 import { getCode4Create } from "../../services/adminService";
 import { LANGUAGES } from '../../utils';
+import * as actions from "../../store/actions";
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -41,11 +42,14 @@ class UserRedux extends Component {
         }
     }
     componentDidMount() {
-        this.getCode();
+        this.props.getGenderStart();
+        //this.getCode();
     }
 
     render() {
         let code = this.state.code;
+        let { genders } = this.props;
+        console.log(genders);
         return (
             <>
                 <div className="user-redux-container" >
@@ -84,8 +88,8 @@ class UserRedux extends Component {
                                     <select id="inputState1" className="form-select" name="gender" onChange={(event) => { this.handleChangeInput(event, 'gender') }}>
                                         <>
                                             <option>Choose...</option>
-                                            {(code.length !== 0) && code[0].code.map((item, index) => {
-                                                return (this.props.language === LANGUAGES.VI`` ?
+                                            {(genders.length !== 0) && genders.map((item, index) => {
+                                                return (this.props.language === LANGUAGES.VI ?
                                                     <option value={1 - index}>{item.valueVi}</option> :
                                                     <option value={1 - index}>{item.valueEn}</option>)
                                             })}
@@ -112,7 +116,7 @@ class UserRedux extends Component {
                                             <option>Choose...</option>
                                             {(code.length !== 0) && code[1].code.map((item, index) => {
                                                 return (
-                                                    this.props.language === LANGUAGES.VI`` ?
+                                                    this.props.language === LANGUAGES.VI ?
                                                         <option value={index}>{item.valueVi}</option> :
                                                         <option value={index}>{item.valueEn}</option>)
                                             })}
@@ -120,7 +124,7 @@ class UserRedux extends Component {
                                     </select>
                                 </div>
                                 <div className='col-md-3'>
-                                    <label for="inputpic"><FormattedMessage id='redux.anh' /></label>
+                                    <label for="inputpic" className='form-label'><FormattedMessage id='redux.anh' /></label>
                                     <input type="text" className="form-control" id="inputpic" name="pic" value={this.state.pic} onChange={(event) => { this.handleChangeInput(event, "pic"); }}></input>
                                 </div>
                                 <div className='col-md-3'>
@@ -140,12 +144,14 @@ class UserRedux extends Component {
 
 const mapStateToProps = state => {
     return {
-        language: state.app.language
+        language: state.app.language,
+        genders: state.user.genders,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        getGenderStart: () => dispatch(actions.fetchGenderStart())
     };
 };
 
