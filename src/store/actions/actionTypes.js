@@ -9,13 +9,15 @@ const actionTypes = Object.freeze({
     PROCESS_LOGOUT: 'PROCESS_LOGOUT',
 
     //user
+    ///gender
     FETCH_GENDER_START: "FETCH_GENDER_START",
     FETCH_GENDER_SUCCESS: 'FETCH_GENDER_SUCCESS',
     FETCH_GENDER_FAIL: 'FETCH_GENDER_FAIL',
-
+    ///role
     FETCH_ROLE_START: "FETCH_ROLE_START",
     FETCH_ROLE_SUCCESS: 'FETCH_ROLE_SUCCESS',
     FETCH_ROLE_FAIL: 'FETCH_ROLE_FAIL',
+    ///position
 
 
 })

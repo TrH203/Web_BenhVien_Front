@@ -19,7 +19,6 @@ const userReducer = (state = initialState, action) => {
                 ...copyState,
             }
         case actionTypes.FETCH_GENDER_FAIL:
-            console.log("FAIL");
             return {
                 ...state
             }
