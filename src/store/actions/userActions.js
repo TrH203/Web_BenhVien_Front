@@ -28,7 +28,7 @@ export const fetchGenderSuccess = (code) => ({
 export const fetchGenderFail = () => ({
     type: actionTypes.FETCH_GENDER_FAIL
 })
-
+///
 export const fetchRoleStart = () => {
     return async (dispatch, getState) => {
         try {
@@ -53,4 +53,30 @@ export const fetchRoleSuccess = (code) => ({
 })
 export const fetchRoleFail = () => ({
     type: actionTypes.FETCH_ROLE_FAIL
+})
+///
+export const fetchPositionStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getCode4Create("position");
+            console.log(res.code);
+            if (res && res.errCode === 0) {
+                dispatch(fetchPositionSuccess(res.code));
+            }
+            else {
+                dispatch(fetchPositionFail());
+            }
+        } catch (e) {
+            fetchPositionFail();
+            console.log(e);
+        }
+    }
+}
+
+export const fetchPositionSuccess = (code) => ({
+    type: actionTypes.FETCH_POSITION_SUCCESS,
+    code: code
+})
+export const fetchPositionFail = () => ({
+    type: actionTypes.FETCH_POSITION_FAIL
 })

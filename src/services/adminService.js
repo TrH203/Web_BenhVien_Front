@@ -73,6 +73,7 @@ const getCode4Create = async (...types) => {
             results.push(rs);
         }
         if (results.length === 1) {
+            // console.log(results);
             return results[0];
         }
         else {

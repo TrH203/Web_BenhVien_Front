@@ -3,7 +3,7 @@ import actionTypes from "../actions/actionTypes";
 const initialState = {
     genders: [],
     roles: [],
-    positions: []
+    positions: [],
 }
 
 const userReducer = (state = initialState, action) => {
@@ -34,6 +34,22 @@ const userReducer = (state = initialState, action) => {
                 ...copyState1,
             }
         case actionTypes.FETCH_ROLE_FAIL:
+            console.log("FAIL");
+            return {
+                ...state
+            }
+        ///
+        case actionTypes.FETCH_POSITION_START:
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_POSITION_SUCCESS:
+            let copyState2 = { ...state };
+            copyState2.positions = action.code;
+            return {
+                ...copyState2,
+            }
+        case actionTypes.FETCH_POSITION_FAIL:
             console.log("FAIL");
             return {
                 ...state

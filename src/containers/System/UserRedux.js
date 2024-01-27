@@ -30,7 +30,7 @@ class UserRedux extends Component {
         this.setState({
             ...copyState
         }, () => {
-            console.log(this.state);
+            // console.log(this.state);
         })
     }
     async getCode() {
@@ -44,13 +44,13 @@ class UserRedux extends Component {
     componentDidMount() {
         this.props.getGenderStart();
         this.props.getRoleStart();
+        this.props.getPositionStart();
         //this.getCode();
     }
 
     render() {
-        let code = this.state.code;
-        let { genders, roles } = this.props;
-        console.log(roles);
+        // let code = this.state.code;
+        let { genders, roles, positions } = this.props;
         return (
             <>
                 <div className="user-redux-container" >
@@ -102,7 +102,7 @@ class UserRedux extends Component {
                                     <select id="inputState2" className="form-select" name="position" onChange={(event) => { this.handleChangeInput(event, 'position') }}>
                                         <>
                                             <option>Choose...</option>
-                                            {(code.length !== 0) && code[1].code.map((item, index) => {
+                                            {(positions.length !== 0) && positions.map((item, index) => {
                                                 return (this.props.language === LANGUAGES.VI ?
                                                     <option value={index}>{item.valueVi}</option> :
                                                     <option value={index}>{item.valueEn}</option>)
@@ -115,7 +115,7 @@ class UserRedux extends Component {
                                     <select id="inputState3" className="form-select" name="role" onChange={(event) => { this.handleChangeInput(event, 'roleId') }}>
                                         <>
                                             <option>Choose...</option>
-                                            {(roles !== 0) && roles.map((item, index) => {
+                                            {(roles.length !== 0) && roles.map((item, index) => {
                                                 return (
                                                     this.props.language === LANGUAGES.VI ?
                                                         <option value={index}>{item.valueVi}</option> :
@@ -147,14 +147,16 @@ const mapStateToProps = state => {
     return {
         language: state.app.language,
         genders: state.user.genders,
-        roles: state.user.roles
+        roles: state.user.roles,
+        positions: state.user.positions
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
-        getRoleStart: () => dispatch(actions.fetchRoleStart())
+        getRoleStart: () => dispatch(actions.fetchRoleStart()),
+        getPositionStart: () => dispatch(actions.fetchPositionStart())
     };
 };
 
