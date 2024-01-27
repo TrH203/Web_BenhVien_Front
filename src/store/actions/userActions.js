@@ -7,6 +7,7 @@ import { getCode4Create } from "../../services/adminService";
 export const fetchGenderStart = () => {
     return async (dispatch, getState) => {
         try {
+            dispatch({ type: actionTypes.FETCH_GENDER_START })
             let res = await getCode4Create("gender");
             if (res && res.errCode === 0) {
                 dispatch(fetchGenderSuccess(res.code));

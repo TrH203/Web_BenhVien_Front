@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { getCode4Create } from "../../services/adminService";
 import { LANGUAGES } from '../../utils';
 import * as actions from "../../store/actions";
+import Lightbox from 'react-image-lightbox';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -19,8 +20,9 @@ class UserRedux extends Component {
             gender: -1,
             position: -1,
             roleId: -1,
-            pic: "",
-            code: []
+            imageURL: "",
+            code: [],
+            isOpen: false
         };
 
     }
@@ -32,6 +34,15 @@ class UserRedux extends Component {
         }, () => {
             // console.log(this.state);
         })
+    }
+    handleUpload = (event) => {
+        let file = event.target.files[0];
+        if (file) {
+            let objectUrl = URL.createObjectURL(file);
+            this.setState({
+                imageURL: objectUrl
+            })
+        }
     }
     async getCode() {
         let code = await getCode4Create("gender", "role");
@@ -51,10 +62,13 @@ class UserRedux extends Component {
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
+        let { isLoadingGender } = this.props;
         return (
             <>
+                {isLoadingGender === true ? <div>Loading</div> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
+
                     <div className='form-container'>
                         <div className='container'>
                             <form className="row g-3">
@@ -126,7 +140,13 @@ class UserRedux extends Component {
                                 </div>
                                 <div className='col-md-3'>
                                     <label for="inputpic" className='form-label'><FormattedMessage id='redux.anh' /></label>
-                                    <input type="text" className="form-control" id="inputpic" name="pic" value={this.state.pic} onChange={(event) => { this.handleChangeInput(event, "pic"); }}></input>
+                                    <div className='upload-image-container'>
+                                        <input type='file' id='uploadImage' hidden onChange={(event) => { this.handleUpload(event) }}></input>
+                                        <label htmlFor='uploadImage' id='tai-anh'>Tai anh <i class="fas fa-upload"></i></label>
+                                        <div className='preview-image-container'>
+                                            <div className='preview-image' style={{ backgroundImage: `url(${this.state.imageURL})` }} onClick={(event) => { this.setState({ isOpen: true }) }}></div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className='col-md-3'>
                                     <Button className="create-btn form-control" color="primary">
@@ -137,6 +157,12 @@ class UserRedux extends Component {
                         </div>
                     </div>
                 </div >
+                {this.state.isOpen && (
+                    <Lightbox
+                        mainSrc={this.state.imageURL}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                    />
+                )}
             </>
         )
     }
@@ -148,7 +174,8 @@ const mapStateToProps = state => {
         language: state.app.language,
         genders: state.user.genders,
         roles: state.user.roles,
-        positions: state.user.positions
+        positions: state.user.positions,
+        isLoadingGender: state.user.isLoadingGender,
     };
 };
 

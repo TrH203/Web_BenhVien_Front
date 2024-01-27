@@ -4,21 +4,27 @@ const initialState = {
     genders: [],
     roles: [],
     positions: [],
+    isLoadingGender: false,
+    isLoadingRole: false,
+    isLoadingPosition: false,
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_GENDER_START:
+            state.isLoadingGender = true;
             return {
                 ...state,
             }
         case actionTypes.FETCH_GENDER_SUCCESS:
             let copyState = { ...state };
             copyState.genders = action.code;
+            copyState.isLoadingGender = false;
             return {
                 ...copyState,
             }
         case actionTypes.FETCH_GENDER_FAIL:
+            state.isLoadingGender = false;
             return {
                 ...state
             }
