@@ -17,9 +17,9 @@ class UserRedux extends Component {
             lastName: "",
             phoneNumber: "",
             address: "",
-            gender: -1,
-            position: -1,
-            roleId: -1,
+            gender: "",
+            position: "",
+            roleId: "",
             imageURL: "",
             code: [],
             isOpen: false
@@ -34,6 +34,15 @@ class UserRedux extends Component {
         }, () => {
             // console.log(this.state);
         })
+    }
+    handleMissingValue = (name, value) => {
+        if (!value) {
+            alert("You are missing " + name);
+            return false;
+        }
+        else {
+            return true;
+        }
     }
     handleUpload = (event) => {
         let file = event.target.files[0];
@@ -52,13 +61,27 @@ class UserRedux extends Component {
             }, () => { console.log(this.state); });
         }
     }
+    handleSaveUser = () => {
+        if (this.handleMissingValue("Email", this.state.email) ||
+            this.handleMissingValue("Password", this.state.password) ||
+            this.handleMissingValue("First Name", this.state.firstName) ||
+            this.handleMissingValue("Last Name", this.state.lastName) ||
+            this.handleMissingValue("Address", this.state.address) ||
+            this.handleMissingValue("Phone Number", this.state.phoneNumber) ||
+            this.handleMissingValue("Gender", this.state.gender) ||
+            this.handleMissingValue("Position", this.state.position) ||
+            this.handleMissingValue("Role", this.state.roleId)) {
+            console.log("oke");
+            console.log(this.state.password);
+        }
+    }
+
     componentDidMount() {
         this.props.getGenderStart();
         this.props.getRoleStart();
         this.props.getPositionStart();
         //this.getCode();
     }
-
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
