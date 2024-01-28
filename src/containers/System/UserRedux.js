@@ -149,7 +149,9 @@ class UserRedux extends Component {
                                     </div>
                                 </div>
                                 <div className='col-md-3'>
-                                    <Button className="create-btn form-control" color="primary">
+                                    <Button className="create-btn form-control"
+                                        color="primary"
+                                        onClick={(event) => { this.handleSaveUser() }}>
                                         Create
                                     </Button>
                                 </div>

@@ -33,6 +33,7 @@ export const fetchGenderFail = () => ({
 export const fetchRoleStart = () => {
     return async (dispatch, getState) => {
         try {
+            dispatch({ type: actionTypes.FETCH_ROLE_START })
             let res = await getCode4Create("role");
             console.log(res);
             if (res && res.errCode === 0) {
@@ -59,6 +60,7 @@ export const fetchRoleFail = () => ({
 export const fetchPositionStart = () => {
     return async (dispatch, getState) => {
         try {
+            dispatch({ type: actionTypes.FETCH_POSITION_START })
             let res = await getCode4Create("position");
             console.log(res.code);
             if (res && res.errCode === 0) {
