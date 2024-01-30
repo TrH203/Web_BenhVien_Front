@@ -1,0 +1,24 @@
+.loading-container{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    background-color: rgba(125, 117, 117, 0.41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .content-container{
+        background-color: rgba(185, 181, 181, 0.584);
+        width: 500px;
+        height: 150px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .loading-content{
+            font-size: 30px;
+            color: white;
+        }
+    }
+}

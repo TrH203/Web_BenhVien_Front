@@ -7,6 +7,7 @@ import { getCode4Create } from "../../services/adminService";
 import { LANGUAGES } from '../../utils';
 import * as actions from "../../store/actions";
 import Lightbox from 'react-image-lightbox';
+import Loading from './Loading';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -94,8 +95,8 @@ class UserRedux extends Component {
         let { isLoadingGender, isCreating } = this.props;
         return (
             <>
-                {isLoadingGender === true ? <div>Loading</div> : ""}
-                {isCreating === true ? <div>Creating</div> : ""}
+                {isLoadingGender === true ? <Loading /> : ""}
+                {isCreating === true ? <Loading /> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
 

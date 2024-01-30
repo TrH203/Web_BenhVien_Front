@@ -94,11 +94,11 @@ export const saveUserStart = (user2Save) => {
             console.log(res);
             if (res && res.errCode === 0) {
                 dispatch(saveUserSuccess());
-                alert("Create new user: SUCCEED");
+                //alert("Create new user: SUCCEED");
             }
             else {
                 dispatch(saveUserFail());
-                alert("Create new user: FAIL");
+                //alert("Create new user: FAIL");
             }
         } catch (e) {
             console.log(e);
