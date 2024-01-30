@@ -35,7 +35,7 @@ export const fetchRoleStart = () => {
         try {
             dispatch({ type: actionTypes.FETCH_ROLE_START })
             let res = await getCode4Create("role");
-            console.log(res);
+            //console.log(res);
             if (res && res.errCode === 0) {
                 dispatch(fetchRoleSuccess(res.code));
             }
@@ -62,7 +62,7 @@ export const fetchPositionStart = () => {
         try {
             dispatch({ type: actionTypes.FETCH_POSITION_START })
             let res = await getCode4Create("position");
-            console.log(res.code);
+            //console.log(res.code);
             if (res && res.errCode === 0) {
                 dispatch(fetchPositionSuccess(res.code));
             }
@@ -87,15 +87,22 @@ export const fetchPositionFail = () => ({
 /// save user
 export const saveUserStart = (user2Save) => {
     return async (dispatch, getState) => {
-        dispatch({ type: actionTypes.SAVE_USER_START });
-        let res = await createNewUserService(user2Save);
-        if (!res) {
-            saveUserSuccess();
+        try {
+            //console.log(user2Save);
+            dispatch({ type: actionTypes.SAVE_USER_START });
+            let res = await createNewUserService(user2Save);
+            console.log(res);
+            if (res && res.errCode === 0) {
+                dispatch(saveUserSuccess());
+                alert("Create new user: SUCCEED");
+            }
+            else {
+                dispatch(saveUserFail());
+                alert("Create new user: FAIL");
+            }
+        } catch (e) {
+            console.log(e);
         }
-        else {
-            saveUserFail();
-        }
-
     }
 }
 export const saveUserSuccess = () => ({

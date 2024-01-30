@@ -60,12 +60,25 @@ class UserRedux extends Component {
         if (Object.keys(code).length !== 0) {
             this.setState({
                 code: code
-            }, () => { console.log(this.state); });
+            });
         }
     }
     handleSaveUser = () => {
         if (this.handleMissingValue()) {
-            console.log("oke");
+            let user2Create = {
+                "email": this.state.email,
+                "password": this.state.password,
+                "firstName": this.state.firstName,
+                "lastName": this.state.lastName,
+                "phoneNumber": this.state.phoneNumber,
+                "address": this.state.address,
+                "gender": this.state.gender,
+                //"position": this.state.position,
+                "roleId": this.state.roleId,
+            };
+            //console.log(user2Create);
+            this.props.saveUserStart(user2Create);
+
         }
     }
 
@@ -78,10 +91,11 @@ class UserRedux extends Component {
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
-        let { isLoadingGender } = this.props;
+        let { isLoadingGender, isCreating } = this.props;
         return (
             <>
                 {isLoadingGender === true ? <div>Loading</div> : ""}
+                {isCreating === true ? <div>Creating</div> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
 
@@ -194,6 +208,7 @@ const mapStateToProps = state => {
         roles: state.user.roles,
         positions: state.user.positions,
         isLoadingGender: state.user.isLoadingGender,
+        isCreating: state.user.isCreating,
     };
 };
 
@@ -201,7 +216,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
-        getPositionStart: () => dispatch(actions.fetchPositionStart())
+        getPositionStart: () => dispatch(actions.fetchPositionStart()),
+        saveUserStart: (user2Save) => dispatch(actions.saveUserStart(user2Save)),
     };
 };
 
