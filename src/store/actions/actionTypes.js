@@ -22,6 +22,12 @@ const actionTypes = Object.freeze({
     FETCH_POSITION_SUCCESS: 'FETCH_POSITION_SUCCESS',
     FETCH_POSITION_FAIL: 'FETCH_POSITION_FAIL',
 
+    /// save user
+    SAVE_USER_START: "SAVE_USER_START",
+    SAVE_USER_SUCCESS: "SAVE_USER_SUCCESS",
+    SAVE_USER_FAIL: "SAVE_USER_FAIL",
+
+
 })
 
 export default actionTypes;

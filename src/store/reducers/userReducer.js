@@ -7,6 +7,7 @@ const initialState = {
     isLoadingGender: false,
     isLoadingRole: false,
     isLoadingPosition: false,
+    isCreating: false,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -59,6 +60,21 @@ const userReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_POSITION_FAIL:
             console.log("FAIL");
+            return {
+                ...state
+            }
+        case actionTypes.SAVE_USER_START:
+            state.isCreating = true;
+            return {
+                ...state
+            }
+        case actionTypes.SAVE_USER_SUCCESS:
+            state.isCreating = false;
+            return {
+                ...state
+            }
+        case actionTypes.SAVE_USER_FAIL:
+            state.isCreating = false;
             return {
                 ...state
             }

@@ -35,14 +35,16 @@ class UserRedux extends Component {
             // console.log(this.state);
         })
     }
-    handleMissingValue = (name, value) => {
-        if (!value) {
-            alert("You are missing " + name);
-            return false;
+    handleMissingValue = () => {
+        let arrCheck = ["email", "password", "firstName", "lastName", "phoneNumber", "address", "gender", "position", "roleId"];
+        let missing = 0;
+        for (let v of arrCheck) {
+            if (!this.state[v]) {
+                alert("Missing value: " + v.toUpperCase());
+                missing++;
+            }
         }
-        else {
-            return true;
-        }
+        return missing === 0;
     }
     handleUpload = (event) => {
         let file = event.target.files[0];
@@ -62,17 +64,8 @@ class UserRedux extends Component {
         }
     }
     handleSaveUser = () => {
-        if (this.handleMissingValue("Email", this.state.email) ||
-            this.handleMissingValue("Password", this.state.password) ||
-            this.handleMissingValue("First Name", this.state.firstName) ||
-            this.handleMissingValue("Last Name", this.state.lastName) ||
-            this.handleMissingValue("Address", this.state.address) ||
-            this.handleMissingValue("Phone Number", this.state.phoneNumber) ||
-            this.handleMissingValue("Gender", this.state.gender) ||
-            this.handleMissingValue("Position", this.state.position) ||
-            this.handleMissingValue("Role", this.state.roleId)) {
+        if (this.handleMissingValue()) {
             console.log("oke");
-            console.log(this.state.password);
         }
     }
 

@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getCode4Create } from "../../services/adminService";
+import { getCode4Create, createNewUserService } from "../../services/adminService";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
 // })
@@ -82,4 +82,25 @@ export const fetchPositionSuccess = (code) => ({
 })
 export const fetchPositionFail = () => ({
     type: actionTypes.FETCH_POSITION_FAIL
+})
+
+/// save user
+export const saveUserStart = (user2Save) => {
+    return async (dispatch, getState) => {
+        dispatch({ type: actionTypes.SAVE_USER_START });
+        let res = await createNewUserService(user2Save);
+        if (!res) {
+            saveUserSuccess();
+        }
+        else {
+            saveUserFail();
+        }
+
+    }
+}
+export const saveUserSuccess = () => ({
+    type: actionTypes.SAVE_USER_SUCCESS
+})
+export const saveUserFail = () => ({
+    type: actionTypes.SAVE_USER_FAIL
 })
