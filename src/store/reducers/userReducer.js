@@ -4,77 +4,78 @@ const initialState = {
     genders: [],
     roles: [],
     positions: [],
-    isLoadingGender: false,
-    isLoadingRole: false,
-    isLoadingPosition: false,
-    isCreating: false,
+    isLoading: false,
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_GENDER_START:
-            state.isLoadingGender = true;
+            state.isLoading = true;
             return {
                 ...state,
             }
         case actionTypes.FETCH_GENDER_SUCCESS:
             let copyState = { ...state };
             copyState.genders = action.code;
-            copyState.isLoadingGender = false;
+            copyState.isLoading = false;
             return {
                 ...copyState,
             }
         case actionTypes.FETCH_GENDER_FAIL:
-            state.isLoadingGender = false;
+            state.isLoading = false;
             return {
                 ...state
             }
         ///
         case actionTypes.FETCH_ROLE_START:
-            state.isLoadingRole = true;
+            state.isLoading = true;
             return {
                 ...state,
             }
         case actionTypes.FETCH_ROLE_SUCCESS:
             let copyState1 = { ...state };
             copyState1.roles = action.code;
+            copyState1.isLoading = false;
             return {
                 ...copyState1,
             }
         case actionTypes.FETCH_ROLE_FAIL:
             console.log("FAIL");
+            state.isLoading = false;
             return {
                 ...state
             }
         ///
         case actionTypes.FETCH_POSITION_START:
-            state.isLoadingPosition = true;
+            state.isLoading = true;
             return {
                 ...state,
             }
         case actionTypes.FETCH_POSITION_SUCCESS:
             let copyState2 = { ...state };
             copyState2.positions = action.code;
+            copyState2.isLoading = false;
             return {
                 ...copyState2,
             }
         case actionTypes.FETCH_POSITION_FAIL:
             console.log("FAIL");
+            state.isLoading = false;
             return {
                 ...state
             }
         case actionTypes.SAVE_USER_START:
-            state.isCreating = true;
+            state.isLoading = true;
             return {
                 ...state
             }
         case actionTypes.SAVE_USER_SUCCESS:
-            state.isCreating = false;
+            state.isLoading = false;
             return {
                 ...state
             }
         case actionTypes.SAVE_USER_FAIL:
-            state.isCreating = false;
+            state.isLoading = false;
             return {
                 ...state
             }

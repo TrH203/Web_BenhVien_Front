@@ -92,11 +92,10 @@ class UserRedux extends Component {
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
-        let { isLoadingGender, isCreating } = this.props;
+        let { isLoading } = this.props;
         return (
             <>
-                {isLoadingGender === true ? <Loading /> : ""}
-                {isCreating === true ? <Loading /> : ""}
+                {isLoading === true ? <Loading /> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
 
@@ -208,8 +207,7 @@ const mapStateToProps = state => {
         genders: state.user.genders,
         roles: state.user.roles,
         positions: state.user.positions,
-        isLoadingGender: state.user.isLoadingGender,
-        isCreating: state.user.isCreating,
+        isLoading: state.user.isLoading,
     };
 };
 

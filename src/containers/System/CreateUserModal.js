@@ -6,6 +6,7 @@ import { input } from "bootstrap";
 import "./CreateUserModal.scss";
 import { createNewUserService } from '../../services/adminService';
 import { emitter } from "../../utils/emitter";
+import Loading from './Loading';
 
 class CreateUserModal extends Component {
     constructor(props) {
