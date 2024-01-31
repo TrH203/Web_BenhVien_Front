@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getCode4Create, createNewUserService } from "../../services/adminService";
+import { getCode4Create, createNewUserService, getUserService } from "../../services/adminService";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
 // })
@@ -110,4 +110,28 @@ export const saveUserSuccess = () => ({
 })
 export const saveUserFail = () => ({
     type: actionTypes.SAVE_USER_FAIL
+})
+
+export const updateUserTableStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.UPDATE_USER_TABLE_START });
+            let res = await getUserService();
+            if (res && res.errCode === 0) {
+                dispatch(updateUserTableSuccess(res.users));
+            }
+            else {
+                dispatch(updateUserTableFail());
+            }
+        } catch (e) {
+            dispatch(updateUserTableFail);
+        }
+    }
+}
+export const updateUserTableSuccess = (arrUsers) => ({
+    type: actionTypes.UPDATE_USER_TABLE_SUCCESS,
+    arrUsers: arrUsers
+})
+export const updateUserTableFail = () => ({
+    type: actionTypes.UPDATE_USER_TABLE_FAIL
 })

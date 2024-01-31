@@ -8,6 +8,7 @@ import { LANGUAGES } from '../../utils';
 import * as actions from "../../store/actions";
 import Lightbox from 'react-image-lightbox';
 import Loading from './Loading';
+import { getUserService } from '../../services/adminService';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -23,6 +24,7 @@ class UserRedux extends Component {
             roleId: "",
             imageURL: "",
             code: [],
+            arrUsers: [],
             isOpen: false
         };
 
@@ -83,16 +85,26 @@ class UserRedux extends Component {
         }
     }
 
+    updateAllUser = async () => {
+        let rs = await getUserService();
+        if (rs && rs.errCode === 0) {
+            this.setState({
+                arrUsers: rs.users
+            })
+        }
+    }
     componentDidMount() {
         this.props.getGenderStart();
         this.props.getRoleStart();
         this.props.getPositionStart();
+        this.props.updateAllUser();
         //this.getCode();
     }
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
         let { isLoading } = this.props;
+        let { arrUsers } = this.props;
         return (
             <>
                 {isLoading === true ? <Loading /> : ""}
@@ -189,12 +201,74 @@ class UserRedux extends Component {
                         </div>
                     </div>
                 </div >
-                {this.state.isOpen && (
-                    <Lightbox
-                        mainSrc={this.state.imageURL}
-                        onCloseRequest={() => this.setState({ isOpen: false })}
-                    />
-                )}
+                <div className='mx-3'>
+                    <div className='table-container table-user-redux'>
+                        <table className='simple-table'>
+                            <thead>
+                                <tr className='table-header'>
+                                    <th>
+                                        <FormattedMessage id="user-manage.id" defaultMessage="Id" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="user-manage.email" defaultMessage="Email" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="user-manage.firstName" defaultMessage="First Name" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="user-manage.lastName" defaultMessage="Last Name" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="user-manage.phoneNumber" defaultMessage="Phone Number" />
+                                    </th>
+                                    <th>
+                                        <FormattedMessage id="user-manage.action" defaultMessage="Action" />
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {arrUsers && arrUsers.map((item, index) => {
+                                    return (
+                                        <>
+                                            <tr>
+                                                <td>{item.id}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.firstName}</td>
+                                                <td>{item.lastName}</td>
+                                                <td>{item.phoneNumber}</td>
+                                                <td>
+                                                    <div className='div-btn'>
+                                                        <button className='edit' id={item.id} onClick={async (event) => {
+                                                            //this.handleEditUserModalToggle();
+                                                        }}>
+                                                            <FormattedMessage id="user-manage.edit" defaultMessage="Edit" />
+                                                            <i className="far fa-edit"></i>
+                                                        </button>
+                                                        <button className='del' id={item.id} onClick={async (event) => {
+                                                            //await this.handleDeleteUserModalToggle(item.id);
+                                                        }}
+                                                        >
+                                                            <FormattedMessage id="user-manage.delete" defaultMessage="Delete" />
+                                                            <i class="fas fa-user-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div >
+                </div>
+                {
+                    this.state.isOpen && (
+                        <Lightbox
+                            mainSrc={this.state.imageURL}
+                            onCloseRequest={() => this.setState({ isOpen: false })}
+                        />
+                    )
+                }
             </>
         )
     }
@@ -208,6 +282,7 @@ const mapStateToProps = state => {
         roles: state.user.roles,
         positions: state.user.positions,
         isLoading: state.user.isLoading,
+        arrUsers: state.user.arrUsers,
     };
 };
 
@@ -217,6 +292,7 @@ const mapDispatchToProps = dispatch => {
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
         getPositionStart: () => dispatch(actions.fetchPositionStart()),
         saveUserStart: (user2Save) => dispatch(actions.saveUserStart(user2Save)),
+        updateAllUser: () => dispatch(actions.updateUserTableStart()),
     };
 };
 

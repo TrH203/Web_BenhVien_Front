@@ -4,6 +4,7 @@ const initialState = {
     genders: [],
     roles: [],
     positions: [],
+    arrUsers: [],
     isLoading: false,
 }
 
@@ -75,6 +76,24 @@ const userReducer = (state = initialState, action) => {
                 ...state
             }
         case actionTypes.SAVE_USER_FAIL:
+            state.isLoading = false;
+            return {
+                ...state
+            }
+
+        /// update
+        case actionTypes.UPDATE_USER_TABLE_START:
+            state.isLoading = true;
+            return {
+                ...state
+            }
+        case actionTypes.UPDATE_USER_TABLE_SUCCESS:
+            state.isLoading = false;
+            state.arrUsers = action.arrUsers;
+            return {
+                ...state
+            }
+        case actionTypes.UPDATE_USER_TABLE_FAIL:
             state.isLoading = false;
             return {
                 ...state
