@@ -33,7 +33,7 @@ const createNewUserService = (data) => {
         try {
             console.log(data);
             let status = await axios.post("http://localhost:8080/api/create-new-user", data);
-            resolve(status);
+            setTimeout(() => { resolve(status) }, 200);
         } catch (e) {
             console.log(e);
             reject({})

@@ -66,7 +66,7 @@ class UserRedux extends Component {
             });
         }
     }
-    handleSaveUser = () => {
+    handleSaveUser = async () => {
         if (this.handleMissingValue()) {
             let user2Create = {
                 "email": this.state.email,
@@ -80,7 +80,7 @@ class UserRedux extends Component {
                 "roleId": this.state.roleId,
             };
             //console.log(user2Create);
-            this.props.saveUserStart(user2Create);
+            await this.props.saveUserStart(user2Create);
 
         }
     }
@@ -105,12 +105,12 @@ class UserRedux extends Component {
         let { genders, roles, positions } = this.props;
         let { isLoading } = this.props;
         let { arrUsers } = this.props;
+        let { updateAllUser } = this.props;
         return (
             <>
                 {isLoading === true ? <Loading /> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
-
                     <div className='form-container'>
                         <div className='container'>
                             <form className="row g-3">
@@ -193,7 +193,7 @@ class UserRedux extends Component {
                                 <div className='col-md-3'>
                                     <Button className="create-btn form-control"
                                         color="primary"
-                                        onClick={(event) => { this.handleSaveUser() }}>
+                                        onClick={async (event) => { await this.handleSaveUser(); updateAllUser(); }}>
                                         Create
                                     </Button>
                                 </div>
