@@ -27,7 +27,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state
             }
-        ///
+        /// role
         case actionTypes.FETCH_ROLE_START:
             state.isLoading = true;
             return {
@@ -46,7 +46,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state
             }
-        ///
+        /// position
         case actionTypes.FETCH_POSITION_START:
             state.isLoading = true;
             return {

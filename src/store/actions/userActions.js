@@ -9,6 +9,7 @@ export const fetchGenderStart = () => {
         try {
             dispatch({ type: actionTypes.FETCH_GENDER_START })
             let res = await getCode4Create("gender");
+            console.log(res);
             if (res && res.errCode === 0) {
                 dispatch(fetchGenderSuccess(res.code));
             }

@@ -81,10 +81,21 @@ class UserRedux extends Component {
             };
             //console.log(user2Create);
             await this.props.saveUserStart(user2Create);
-
         }
     }
-
+    resetUserInfoState = () => {
+        this.setState({
+            "email": "",
+            "password": "",
+            "firstName": "",
+            "lastName": "",
+            "phoneNumber": "",
+            "address": "",
+            "gender": -1,
+            "position": -1,
+            "roleId": -1,
+        });
+    }
     updateAllUser = async () => {
         let rs = await getUserService();
         if (rs && rs.errCode === 0) {
@@ -106,6 +117,7 @@ class UserRedux extends Component {
         let { isLoading } = this.props;
         let { arrUsers } = this.props;
         let { updateAllUser } = this.props;
+        console.log(arrUsers);
         return (
             <>
                 {isLoading === true ? <Loading /> : ""}
