@@ -104,6 +104,21 @@ class UserRedux extends Component {
             })
         }
     }
+    handleEditUserRedux = async (event) => {
+        let rs = await getUserService(event.target.id);
+        this.setState({
+            "email": rs.email,
+            "password": ,
+            "firstName": "",
+            "lastName": "",
+            "phoneNumber": "",
+            "address": "",
+            "gender": -1,
+            "position": -1,
+            "roleId": -1,
+        })
+        //this.props.editUser(event.target.id);
+    }
     componentDidMount() {
         this.props.getGenderStart();
         this.props.getRoleStart();
@@ -117,7 +132,7 @@ class UserRedux extends Component {
         let { isLoading } = this.props;
         let { arrUsers } = this.props;
         let { updateAllUser } = this.props;
-        console.log(arrUsers);
+        //console.log(arrUsers);
         return (
             <>
                 {isLoading === true ? <Loading /> : ""}
@@ -250,8 +265,8 @@ class UserRedux extends Component {
                                                 <td>{item.phoneNumber}</td>
                                                 <td>
                                                     <div className='div-btn'>
-                                                        <button className='edit' id={item.id} onClick={async (event) => {
-                                                            //this.handleEditUserModalToggle();
+                                                        <button className='edit' id={item.id} onClick={(event) => {
+                                                            this.handleEditUserRedux(event);
                                                         }}>
                                                             <FormattedMessage id="user-manage.edit" defaultMessage="Edit" />
                                                             <i className="far fa-edit"></i>
@@ -305,6 +320,7 @@ const mapDispatchToProps = dispatch => {
         getPositionStart: () => dispatch(actions.fetchPositionStart()),
         saveUserStart: (user2Save) => dispatch(actions.saveUserStart(user2Save)),
         updateAllUser: () => dispatch(actions.updateUserTableStart()),
+        editUser: (id) => dispatch(actions.editUserStart(id)),
     };
 };
 

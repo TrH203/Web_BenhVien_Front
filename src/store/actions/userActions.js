@@ -1,5 +1,5 @@
 import actionTypes from './actionTypes';
-import { getCode4Create, createNewUserService, getUserService } from "../../services/adminService";
+import { getCode4Create, createNewUserService, getUserService, editUserService } from "../../services/adminService";
 // export const fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START
 // })
@@ -9,7 +9,7 @@ export const fetchGenderStart = () => {
         try {
             dispatch({ type: actionTypes.FETCH_GENDER_START })
             let res = await getCode4Create("gender");
-            console.log(res);
+            //console.log(res);
             if (res && res.errCode === 0) {
                 dispatch(fetchGenderSuccess(res.code));
             }
@@ -135,4 +135,23 @@ export const updateUserTableSuccess = (arrUsers) => ({
 })
 export const updateUserTableFail = () => ({
     type: actionTypes.UPDATE_USER_TABLE_FAIL
+})
+// EDIT USER
+export const editUserStart = (id) => {
+    return async (dispatch, getState) => {
+        try {
+            dispatch({ type: actionTypes.EDIT_USER_START });
+            let res = await editUserService(id);
+            console.log(res);
+            dispatch(editUserSuccess());
+        } catch (e) {
+            dispatch(editUserFail());
+        }
+    }
+}
+export const editUserSuccess = () => ({
+    type: actionTypes.EDIT_USER_SUCCESS
+})
+export const editUserFail = () => ({
+    type: actionTypes.EDIT_USER_FAIL
 })
