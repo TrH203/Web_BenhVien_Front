@@ -19,12 +19,12 @@ class UserRedux extends Component {
             lastName: "",
             phoneNumber: "",
             address: "",
-            gender: "",
-            position: "",
-            roleId: "",
+            gender: -1,
+            position: -1,
+            roleId: -1,
             imageURL: "",
-            code: [],
-            arrUsers: [],
+            //code: [],
+            //arrUsers: [],
             isOpen: false
         };
 
@@ -106,17 +106,23 @@ class UserRedux extends Component {
     }
     handleEditUserRedux = async (event) => {
         let rs = await getUserService(event.target.id);
-        this.setState({
-            "email": rs.email,
-            "password": ,
-            "firstName": "",
-            "lastName": "",
-            "phoneNumber": "",
-            "address": "",
-            "gender": -1,
-            "position": -1,
-            "roleId": -1,
-        })
+        if (rs && rs.errCode === 0) {
+            console.log(rs);
+            this.setState({
+                "email": rs.users.email,
+                // "password": rs.users.pas,
+                "firstName": rs.users.firstName,
+                "lastName": rs.users.lastName,
+                "phoneNumber": rs.users.phoneNumber,
+                "address": rs.users.address,
+                "gender": rs.users.gender,
+                // "position": rs.users.position,
+                "roleId": rs.users.roleId,
+            }, () => {
+                console.log(this.state);
+            })
+        }
+
         //this.props.editUser(event.target.id);
     }
     componentDidMount() {
@@ -199,11 +205,22 @@ class UserRedux extends Component {
                                         <>
                                             <option>Choose...</option>
                                             {(roles.length !== 0) && roles.map((item, index) => {
-                                                return (
-                                                    this.props.language === LANGUAGES.VI ?
-                                                        <option value={index}>{item.valueVi}</option> :
-                                                        <option value={index}>{item.valueEn}</option>)
+                                                if (index == this.state.roleId) {
+                                                    console.log("index", index);
+                                                    console.log("roleid", this.state.roleId);
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index} selected>{item.valueVi}</option> :
+                                                            <option value={index} selected>{item.valueEn}</option>)
+                                                }
+                                                else {
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index}>{item.valueVi}</option> :
+                                                            <option value={index}>{item.valueEn}</option>)
+                                                }
                                             })}
+
                                         </>
                                     </select>
                                 </div>
