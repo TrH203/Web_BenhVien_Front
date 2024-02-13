@@ -179,9 +179,20 @@ class UserRedux extends Component {
                                         <>
                                             <option>Choose...</option>
                                             {(genders.length !== 0) && genders.map((item, index) => {
-                                                return (this.props.language === LANGUAGES.VI ?
-                                                    <option value={1 - index}>{item.valueVi}</option> :
-                                                    <option value={1 - index}>{item.valueEn}</option>)
+                                                if (index == this.state.gender) {
+                                                    console.log("index", index);
+                                                    console.log("roleid", this.state.gender);
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index} selected>{item.valueVi}</option> :
+                                                            <option value={index} selected>{item.valueEn}</option>)
+                                                }
+                                                else {
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index}>{item.valueVi}</option> :
+                                                            <option value={index}>{item.valueEn}</option>)
+                                                }
                                             })}
                                         </>
                                     </select>
@@ -192,9 +203,20 @@ class UserRedux extends Component {
                                         <>
                                             <option>Choose...</option>
                                             {(positions.length !== 0) && positions.map((item, index) => {
-                                                return (this.props.language === LANGUAGES.VI ?
-                                                    <option value={index}>{item.valueVi}</option> :
-                                                    <option value={index}>{item.valueEn}</option>)
+                                                if (index == this.state.position) {
+                                                    console.log("index", index);
+                                                    console.log("roleid", this.state.position);
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index} selected>{item.valueVi}</option> :
+                                                            <option value={index} selected>{item.valueEn}</option>)
+                                                }
+                                                else {
+                                                    return (
+                                                        this.props.language === LANGUAGES.VI ?
+                                                            <option value={index}>{item.valueVi}</option> :
+                                                            <option value={index}>{item.valueEn}</option>)
+                                                }
                                             })}
                                         </>
                                     </select>
