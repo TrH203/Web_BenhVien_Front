@@ -8,7 +8,7 @@ import { LANGUAGES } from '../../utils';
 import * as actions from "../../store/actions";
 import Lightbox from 'react-image-lightbox';
 import Loading from './Loading';
-import { getUserService } from '../../services/adminService';
+import { getUserService, deleteUserService } from '../../services/adminService';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -124,6 +124,14 @@ class UserRedux extends Component {
         }
 
         //this.props.editUser(event.target.id);
+    }
+    handleDeleteUserRedux = async (event) => {
+        let rs = await deleteUserService(event.target.id);
+        if (rs && rs.errCode === 0) {
+            this.resetUserInfoState();
+            //alert("Delete succeed");
+            await this.props.updateAllUser();
+        }
     }
     componentDidMount() {
         this.props.getGenderStart();
@@ -311,7 +319,7 @@ class UserRedux extends Component {
                                                             <i className="far fa-edit"></i>
                                                         </button>
                                                         <button className='del' id={item.id} onClick={async (event) => {
-                                                            //await this.handleDeleteUserModalToggle(item.id);
+                                                            await this.handleDeleteUserRedux(event);
                                                         }}
                                                         >
                                                             <FormattedMessage id="user-manage.delete" defaultMessage="Delete" />
