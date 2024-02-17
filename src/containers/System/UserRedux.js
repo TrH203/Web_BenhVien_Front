@@ -9,6 +9,9 @@ import * as actions from "../../store/actions";
 import Lightbox from 'react-image-lightbox';
 import Loading from './Loading';
 import { getUserService, deleteUserService } from '../../services/adminService';
+import Notification from "../../components/Notification";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -129,8 +132,8 @@ class UserRedux extends Component {
         let rs = await deleteUserService(event.target.id);
         if (rs && rs.errCode === 0) {
             this.resetUserInfoState();
-            //alert("Delete succeed");
             await this.props.updateAllUser();
+            this.createNotification('success', "Xóa Người Dùng Thành Công");
         }
     }
     componentDidMount() {
@@ -140,6 +143,28 @@ class UserRedux extends Component {
         this.props.updateAllUser();
         //this.getCode();
     }
+    createNotification = (type, message) => {
+        return () => {
+            switch (type) {
+                case 'info':
+                    NotificationManager.info(message);
+                    break;
+                case 'success':
+                    NotificationManager.success(message, 'Succeed');
+                    break;
+                case 'warning':
+                    NotificationManager.warning(message, 'Warning', 3000);
+                    break;
+                case 'error':
+                    NotificationManager.error(message, 'Click me!', 5000, () => {
+                        alert('callback');
+                    });
+                    break;
+                default:
+                    break;
+            }
+        };
+    };
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
@@ -149,6 +174,8 @@ class UserRedux extends Component {
         //console.log(arrUsers);
         return (
             <>
+                {/* <Notification /> */}
+                <NotificationContainer />
                 {isLoading === true ? <Loading /> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
@@ -318,13 +345,14 @@ class UserRedux extends Component {
                                                             <FormattedMessage id="user-manage.edit" defaultMessage="Edit" />
                                                             <i className="far fa-edit"></i>
                                                         </button>
-                                                        <button className='del' id={item.id} onClick={async (event) => {
-                                                            await this.handleDeleteUserRedux(event);
+                                                        <button className='del' id={item.id} onClick={(event) => {
+                                                            this.handleDeleteUserRedux(event);
                                                         }}
                                                         >
                                                             <FormattedMessage id="user-manage.delete" defaultMessage="Delete" />
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
+                                                        <button onClick={() => { return this.createNotification('warning'); }}></button>
                                                     </div>
                                                 </td>
                                             </tr>

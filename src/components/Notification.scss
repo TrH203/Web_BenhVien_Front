@@ -1,0 +1,32 @@
+.noti-container{
+    width: 500px;
+    height: 70px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background-color: rgb(160, 211, 113);
+    border: 1px solid green;
+    border-radius: 5px;
+    .noti-content{
+        .header{
+            height: 10px;
+            font-weight: bolder;
+            color: white;
+            text-align: end;
+            margin-right: 5px;
+        }
+        .message{
+            height: 50px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .status{
+            position: absolute;
+            bottom: 0;
+            height: 5px;
+            width: 100%;
+            background-color: rgba(243, 243, 243, 0.794);
+        }
+    }
+    overflow: hidden;
+}
