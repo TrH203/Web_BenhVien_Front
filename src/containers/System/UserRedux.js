@@ -9,9 +9,8 @@ import * as actions from "../../store/actions";
 import Lightbox from 'react-image-lightbox';
 import Loading from './Loading';
 import { getUserService, deleteUserService } from '../../services/adminService';
-import Notification from "../../components/Notification";
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 class UserRedux extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +27,7 @@ class UserRedux extends Component {
             imageURL: "",
             //code: [],
             //arrUsers: [],
-            isOpen: false
+            isOpen: false,
         };
 
     }
@@ -133,7 +132,7 @@ class UserRedux extends Component {
         if (rs && rs.errCode === 0) {
             this.resetUserInfoState();
             await this.props.updateAllUser();
-            this.createNotification('success', "Xóa Người Dùng Thành Công");
+            //this.createNotification('success', "Xóa Người Dùng Thành Công");
         }
     }
     componentDidMount() {
@@ -143,28 +142,19 @@ class UserRedux extends Component {
         this.props.updateAllUser();
         //this.getCode();
     }
-    createNotification = (type, message) => {
-        return () => {
-            switch (type) {
-                case 'info':
-                    NotificationManager.info(message);
-                    break;
-                case 'success':
-                    NotificationManager.success(message, 'Succeed');
-                    break;
-                case 'warning':
-                    NotificationManager.warning(message, 'Warning', 3000);
-                    break;
-                case 'error':
-                    NotificationManager.error(message, 'Click me!', 5000, () => {
-                        alert('callback');
-                    });
-                    break;
-                default:
-                    break;
-            }
-        };
-    };
+    noti = (type) => {
+        toast[type]('🦄 Wow so easy!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: 'Bounce',
+        });
+    }
     render() {
         // let code = this.state.code;
         let { genders, roles, positions } = this.props;
@@ -174,8 +164,8 @@ class UserRedux extends Component {
         //console.log(arrUsers);
         return (
             <>
-                {/* <Notification /> */}
-                <NotificationContainer />
+                <button onClick={() => { this.noti("success") }}>ok</button>
+                <ToastContainer />
                 {isLoading === true ? <Loading /> : ""}
                 <div className="user-redux-container" >
                     <div className='title'>User Redux from TrHien203</div>
@@ -352,7 +342,7 @@ class UserRedux extends Component {
                                                             <FormattedMessage id="user-manage.delete" defaultMessage="Delete" />
                                                             <i class="fas fa-user-minus"></i>
                                                         </button>
-                                                        <button onClick={() => { return this.createNotification('warning'); }}></button>
+                                                        {/* <button onClick={() => { return this.createNotification('warning'); }}></button> */}
                                                     </div>
                                                 </td>
                                             </tr>
